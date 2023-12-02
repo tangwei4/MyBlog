@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.logging.Logger;
 
 /**
  * Created with IntelliJ IDEA.
@@ -32,7 +31,6 @@ public class LoginController {
 
     @RequestMapping("/admin/logins")
     public ModelAndView login(Model model){
-        System.out.println("zzz1");
         return new ModelAndView("admin/login","login",model);
     }
 
@@ -40,8 +38,7 @@ public class LoginController {
     @ResponseBody
     public String loginVerification(HttpServletRequest request, @RequestParam("username")String username,
                                     @RequestParam("password")String password, Model model){
-        System.out.println(username+password);
-        System.out.println("zzz2");
+        System.out.println(username+"--"+password);
         if (username.equals(name)&&password.equals(password)){
             request.getSession().setAttribute("isLogin","success");
             logMessageService.addALog(StaticField.LOGIN_ACTION);

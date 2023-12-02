@@ -20,7 +20,7 @@ public class InterceptorAllRequestImpl implements HandlerInterceptor {
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
         System.out.println("1");
         if ((request.getSession().getAttribute("isLogin")!=null)
-                &&request.getSession().getAttribute("isLogin").equals("success")){
+                &&"success".equals(request.getSession().getAttribute("isLogin"))){
             return true;
         }else {
             System.out.println("2");

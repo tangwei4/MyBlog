@@ -5,8 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-import java.util.logging.Logger;
-
 /**
  * Created with IntelliJ IDEA.
  * Author: Suyeq
@@ -22,7 +20,6 @@ public class InterceptorConfigurerAdapter extends WebMvcConfigurerAdapter {
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
-        System.out.println("进来了");
         // addPathPatterns 添加路径
         // excludePathPatterns 排除路径
         registry.addInterceptor(interceptorAllRequest).addPathPatterns("/admin/**")

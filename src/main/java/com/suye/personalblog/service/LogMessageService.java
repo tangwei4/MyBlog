@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 /**
@@ -35,9 +37,13 @@ public class LogMessageService {
     public List<LogMessage> getLogMessage(){
         List<LogMessage> list=logRedisRepository.getLogMessage();
         List<LogMessage> logMessageList=new ArrayList<>();
-        for (int i=list.size()-1;i>list.size()-10;i--){
-            logMessageList.add(list.get(i));
+        for (LogMessage logMessage:list) {
+            logMessageList.add(logMessage);
         }
-        return logMessageList;
+        //倒序排列
+        Collections.sort(logMessageList, Comparator.comparing(LogMessage::getDate).reversed());
+        //获取前面5条
+        List<LogMessage> logMessages = logMessageList.subList(0, Math.min(logMessageList.size(), 5));
+        return logMessages;
     }
 }
