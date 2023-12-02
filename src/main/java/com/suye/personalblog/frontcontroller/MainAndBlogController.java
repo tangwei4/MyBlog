@@ -64,7 +64,6 @@ public class MainAndBlogController {
     public ModelAndView allMessage(@RequestParam(name = "search", required = false) String searchContent,
                                    HttpServletRequest request, HttpServletResponse response,
                                    Model model) {
-        System.out.println("lall");
         paginationTool.reset(request, PaginationTool.Category.ALL);
         List<BlogMessageConversion.BlogMessage> recentBlogList = null;
         if (searchContent != null) {
@@ -269,9 +268,6 @@ public class MainAndBlogController {
         BlogMessageConversion.BlogMessage blogMessage =
                 blogMessageConversion.getOneBlogMessage(blogService.findOneById(blogId));
 
-        //List<RunningTrackStack.RunningTrack> runningTrackList=RunningTrackStack.getRunningTrackStack();
-
-        //Set<RunningTrackStacks.RunningTrack> runningTrackList=RunningTrackStacks.getRunningTrackSet();
         List<RunningTrackStacks.RunningTrack> runningTrackList = RunningTrackStacks.getRunningTrackList(request);
 
         List<ConmentMessageConversion.ConmentMessage> recentAllConmentList =

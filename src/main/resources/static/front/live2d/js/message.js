@@ -79,7 +79,7 @@ if(!norunFlag){
 							if(liveTlakTimer == null){
 								liveTlakTimer = window.setInterval(function(){
 									showHitokoto();
-								},15000);
+								},3600000);
 							};
 						});
 					});
@@ -102,7 +102,7 @@ if(!norunFlag){
 						if(liveTlakTimer == null){
 							liveTlakTimer = window.setInterval(function(){
 								showHitokoto();
-							},15000);
+							},3600000);
 						};
 					});
 				}
@@ -154,7 +154,7 @@ if(!norunFlag){
 	
 	liveTlakTimer = setInterval(function(){
 		showHitokoto();
-	},15000);
+	},3600000);
 	
 	function showHitokoto(){
 		if(sessionStorage.getItem("Sleepy")!=="1"){

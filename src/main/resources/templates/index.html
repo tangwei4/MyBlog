@@ -120,45 +120,7 @@
         </div>
 
         <!--音乐播放器-->
-        <div class="widget_text giligili-item">
-            <div class="textwidget custom-html-widget">
-                <script src="//cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
-                <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                <div id="aplayer1" class="aplayer"></div>
-                <script>
-                    // 获取音乐文件列表的接口地址
-                    var musicListUrl = '/front/music';
-                    // 获取包含音乐的元素
-                    var musicListElement = document.getElementById('aplayer1');
-                    // 使用 jQuery 的 $.ajax 发送请求
-                    $.ajax({
-                        url: musicListUrl,
-                        method: 'GET',
-                        dataType: 'json',
-                        success: function (data) {
-                            // 遍历音乐列表并添加到 APlayer 实例
-                            var musicArray = data.map(music => {
-                                return {
-                                    title: music.title,
-                                    author: music.author,
-                                    url: 'front/music/' + music.fileName,
-                                    pic: 'front/music/img/' + music.fileName + '.jpg' // 为每首歌曲设置一个默认图片路径
-                                };
-                            });
-                            // 创建 APlayer 实例
-                            var ap = new APlayer({
-                                element: musicListElement,
-                                autoplay: false,
-                                music: musicArray
-                            });
-                        },
-                        error: function (error) {
-                            console.error('Error fetching music list:', error);
-                        }
-                    });
-                </script>
-            </div>
-        </div>
+        <div th:replace="~{music-player :: music-player}"></div>
 
         <!--最受欢迎-->
         <div class="giligili-item">
@@ -257,7 +219,7 @@
                         <span class="sticky"></span>
 
                         <div class="post-info">
-                            <div class="post-author"><a href="#" title="由Suyeq发布" rel="author">Suyeq</a>
+                            <div class="post-author"><a href="#" title="由CCIOC发布" rel="author">CCIOC</a>
                             </div>
                             <div class="post-meta">
                                 <time itemprop="datePublished" th:text="${BlogMessage.time}">4月前</time>
@@ -300,7 +262,7 @@
                     <article class="giligili-item post">
                         <span class="sticky"></span>
                         <div class="post-info">
-                            <div class="post-author"><a href="#" title="由Suyeq发布" rel="author">Suyeq</a>
+                            <div class="post-author"><a href="#" title="由CCIOC发布" rel="author">CCIOC</a>
                             </div>
                             <div class="post-meta">
                                 <time itemprop="datePublished" th:text="${BlogMessage.time}">4月前</time>
@@ -523,7 +485,7 @@
 <script type="text/javascript" src="front/live2d/js/message.js"></script>
 <script>
     const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
-    const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
+    const weekdays = ["日", "一", "二", "三", "四", "五", "六"];
     let currentDate = new Date();
     let currentMonth = currentDate.getMonth();
     let currentYear = currentDate.getFullYear();

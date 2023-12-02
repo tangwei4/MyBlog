@@ -1,0 +1,40 @@
+<!-- music-player.html -->
+<div class="widget_text giligili-item" th:fragment="music-player">
+    <div class="textwidget custom-html-widget">
+        <script src="https://cdn.bootcss.com/aplayer/1.5.1/APlayer.min.js"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <div id="aplayer1" class="aplayer"></div>
+        <script>
+            // 获取音乐文件列表的接口地址
+            var musicListUrl = '/front/music';
+            // 获取包含音乐的元素
+            var musicListElement = document.getElementById('aplayer1');
+            // 使用 jQuery 的 $.ajax 发送请求
+            $.ajax({
+                url: musicListUrl,
+                method: 'GET',
+                dataType: 'json',
+                success: function (data) {
+                    // 遍历音乐列表并添加到 APlayer 实例
+                    var musicArray = data.map(music => {
+                        return {
+                            title: music.title,
+                            author: music.author,
+                            url: '/front/music/' + music.fileName,
+                            pic: '/front/music/img/' + music.fileName + '.jpg' // 为每首歌曲设置一个默认图片路径
+                        };
+                    });
+                    // 创建 APlayer 实例
+                    var ap = new APlayer({
+                        element: musicListElement,
+                        autoplay: false,
+                        music: musicArray
+                    });
+                },
+                error: function (error) {
+                    console.error('Error fetching music list:', error);
+                }
+            });
+        </script>
+    </div>
+</div>

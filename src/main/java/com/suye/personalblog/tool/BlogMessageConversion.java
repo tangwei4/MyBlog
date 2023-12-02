@@ -49,7 +49,6 @@ public class BlogMessageConversion implements BlogMessageInterface {
             if (file!=null){
                 imgUrl=file.getUrl();
             }
-           // String imgUrl=fileService.findOneById(blog.getImgid()).getUrl();
             BlogMessage blogMessage=new BlogMessage(blog.getId(),
                     blog.getTitle(),imgUrl,
                     readnumConversion(blog.getReadnum()),

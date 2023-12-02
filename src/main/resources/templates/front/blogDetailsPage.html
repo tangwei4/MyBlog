@@ -18,9 +18,12 @@
     <meta name="msapplication-TileImage"
           content="https://shawnzeng.com/wp-content/uploads/2018/02/cropped-logo-270x270.png"/>
     <link href="http://localhost:8080/front/css/Column.css" rel="stylesheet" th:href="@{/front/css/Column.css}">
-    <link type="text/css" media="all" href="http://localhost:8080/front/css/allPage.css" th:href="@{/front/css/allPage.css}" rel="stylesheet"/>
-    <link rel="stylesheet" href="http://localhost:8080/front/tagcloud/tagcloud.min.css" th:href="@{/front/tagcloud/tagcloud.min.css}">
-    <link rel="stylesheet" href="http://localhost:8080/front/live2d/css/live2d.css" th:href="@{/front/live2d/css/live2d.css}"/>
+    <link type="text/css" media="all" href="http://localhost:8080/front/css/allPage.css"
+          th:href="@{/front/css/allPage.css}" rel="stylesheet"/>
+    <link rel="stylesheet" href="http://localhost:8080/front/tagcloud/tagcloud.min.css"
+          th:href="@{/front/tagcloud/tagcloud.min.css}">
+    <link rel="stylesheet" href="http://localhost:8080/front/live2d/css/live2d.css"
+          th:href="@{/front/live2d/css/live2d.css}"/>
     <title>没有爱，就看不见</title>
     <!-- 设置网页图标 -->
     <link rel="icon" href="front/img/img.ico" type="image/x-icon">
@@ -95,7 +98,7 @@
             <img alt=''
                  src='http://localhost:8080/front/img/lem6.jpg' th:src="@{/front/img/lem6.jpg}"
                  srcset='front/img/lem6.jpg 2x'
-                 class='avatar avatar-56 photo user-card-avatar' height='56' width='56' /> <i
+                 class='avatar avatar-56 photo user-card-avatar' height='56' width='56'/> <i
                 class="giligili giligili-certify-3"></i>
         </div>
         <div id="user-info" class="giligili-item">
@@ -109,123 +112,9 @@
                     href="https://blog.csdn.net/hackersuye">Suyeq233</a></div>
             <div class="intro">一杯敬明天，一杯敬过往</div>
         </div>
+        <!--音乐播放器-->
+        <div th:replace="~{music-player :: music-player}"></div>
 
-        <!--<div class="widget_text giligili-item">-->
-        <!--<div class="textwidget custom-html-widget">-->
-        <!--<div style="text-align: center;"><img-->
-        <!--src="https://shawnzeng.com/wp-content/uploads/2018/07/IMG_1974.jpg"-->
-        <!--style="width: 50px;height: 50px;vertical-align: -20px;border-radius: 50%;margin-right: 5px;margin-bottom: 5px;"/><i-->
-        <!--class="giligili giligili-heart-o throb" style="color:red"></i><img-->
-        <!--src="https://shawnzeng.com/wp-content/uploads/2018/07/IMG_1970.jpg"-->
-        <!--style="width: 50px;height: 50px;vertical-align: -20px;border-radius: 50%;margin-left: 5px;margin-bottom: 5px;"/><br/>-->
-        <!--<span id="htmer_time"></span></div>-->
-        <!--<script type="text/javascript" language="javascript">function setTime() {-->
-        <!--var create_time = Math.round(new Date(Date.UTC(2018, 03, 08, 9, 21, 0)).getTime() / 1000);-->
-        <!--var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);-->
-        <!--currentTime = secondToDate((timestamp - create_time));-->
-        <!--currentTimeHtml = currentTime[0] + ' 年 ' + currentTime[1] + ' 天 '-->
-        <!--+ currentTime[2] + ' 时 ' + currentTime[3] + ' 分 ' + currentTime[4]-->
-        <!--+ ' 秒';-->
-        <!--document.getElementById("htmer_time").innerHTML = currentTimeHtml;-->
-        <!--}-->
-
-        <!--function secondToDate(second) {-->
-        <!--if (!second) {-->
-        <!--return 0;-->
-        <!--}-->
-        <!--var time = new Array(0, 0, 0, 0, 0);-->
-        <!--if (second >= 365 * 24 * 3600) {-->
-        <!--time[0] = parseInt(second / (365 * 24 * 3600));-->
-        <!--second %= 365 * 24 * 3600;-->
-        <!--}-->
-        <!--if (second >= 24 * 3600) {-->
-        <!--time[1] = parseInt(second / (24 * 3600));-->
-        <!--second %= 24 * 3600;-->
-        <!--}-->
-        <!--if (second >= 3600) {-->
-        <!--time[2] = parseInt(second / 3600);-->
-        <!--second %= 3600;-->
-        <!--}-->
-        <!--if (second >= 60) {-->
-        <!--time[3] = parseInt(second / 60);-->
-        <!--second %= 60;-->
-        <!--}-->
-        <!--if (second > 0) {-->
-        <!--time[4] = second;-->
-        <!--}-->
-        <!--return time;-->
-        <!--}-->
-
-        <!--setInterval(setTime, 1000);</script>-->
-        <!--</div>-->
-        <!--</div>-->
-
-        <div class="widget_text giligili-item">
-            <div class="textwidget custom-html-widget">
-                <script src="//cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
-                <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-                <div id="aplayer1" class="aplayer"></div>
-                <script>
-                    // 获取音乐文件列表的接口地址
-                    var musicListUrl = '/front/music';
-                    // 获取包含音乐的元素
-                    var musicListElement = document.getElementById('aplayer1');
-                    // 使用 jQuery 的 $.ajax 发送请求
-                    $.ajax({
-                        url: musicListUrl,
-                        method: 'GET',
-                        dataType: 'json',
-                        success: function (data) {
-                            // 遍历音乐列表并添加到 APlayer 实例
-                            var musicArray = data.map(music => {
-                                return {
-                                    title: music.title,
-                                    author: music.author,
-                                    url: 'front/music/' + music.fileName,
-                                    pic: 'front/music/img/' + music.fileName + '.jpg' // 你可能需要为每首歌曲设置一个默认图片路径
-                                };
-                            });
-                            // 创建 APlayer 实例
-                            var ap = new APlayer({
-                                element: musicListElement,
-                                autoplay: false,
-                                music: musicArray
-                            });
-                        },
-                        error: function (error) {
-                            console.error('Error fetching music list:', error);
-                        }
-                    });
-                </script>
-            </div>
-        </div>
-
-        <!--<div class="giligili-item">-->
-            <!--<header class="giligili-item-header"><h3 class="giligili-item-title"><i-->
-                    <!--class="giligili giligili-postlist"></i> 最受欢迎</h3></header>-->
-            <!--<ul class="sidebar-posts-list">-->
-
-                <!--<li th:each="BlogMessage:${popularBlogList}">-->
-                    <!--<p class="post-title">-->
-                        <!--<a href="#" title="WordPress响应式主题Memory" rel="bookmark"-->
-                           <!--th:text="${BlogMessage.title}">WordPress响应式主题Memory</a></p>-->
-                    <!--<p class="post-info">-->
-                        <!--<span>-->
-                            <!--<i class="giligili giligili-view"></i>-->
-                            <!--<a  th:text="${BlogMessage.readnum}">33.62k</a>-->
-                        <!--</span>-->
-                        <!--<span>-->
-                            <!--<i class="giligili giligili-time"></i>-->
-                            <!--<a th:text="${BlogMessage.time}">1年前</a>-->
-                        <!--</span>-->
-                        <!--<span>-->
-                            <!--<i class="giligili giligili-comment"></i>-->
-                            <!--<a th:text="${BlogMessage.conmentnum}">206</a>-->
-                        <!--</span>-->
-                    <!--</p>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
         <div class="giligili-item">
             <header class="giligili-item-header"><h3 class="giligili-item-title"><i
                     class="giligili giligili-postlist"></i> 最受欢迎</h3></header>
@@ -233,7 +122,8 @@
 
                 <li th:each="BlogMessage:${popularBlogList}">
                     <p class="post-title">
-                        <a href="#" th:href="'/blogDetails/'+${BlogMessage.id}" title="WordPress响应式主题Memory"  th:title="${BlogMessage.title}" rel="bookmark"
+                        <a href="#" th:href="'/blogDetails/'+${BlogMessage.id}" title="WordPress响应式主题Memory"
+                           th:title="${BlogMessage.title}" rel="bookmark"
                            th:text="${BlogMessage.title}">WordPress响应式主题Memory</a></p>
                     <p class="post-info">
                         <span>
@@ -250,25 +140,8 @@
                         </span>
                     </p>
                 </li>
-
             </ul>
         </div>
-        <!--最近评论-->
-        <!--<div class="giligili-item">-->
-            <!--<header class="giligili-item-header"><h3 class="giligili-item-title"><i-->
-                    <!--class="giligili giligili-comments"></i> 最近评论</h3></header>-->
-            <!--<ul class="recentcomments">-->
-                <!--<li th:each="ConmentMessage:${recentConmentList}">-->
-                    <!--<a href="https://shawnzeng.com/wordpress-theme-memory.html/comment-page-10#comment-1590"-->
-                       <!--title="suye"> <img alt=''-->
-                                          <!--src='http://localhost:8080/front/img/avatar.png'-->
-                                          <!--class='avatar avatar-36 photo' height='36' width='36'/>-->
-                        <!--<div class="right-box"><span class="author" th:text="${ConmentMessage.visitor.name}">suye</span>于<span th:text="${ConmentMessage.time}">3分钟前</span>在<span class="title" th:text="${ConmentMessage.blogName}">「WordPress响应式主题Memory」</span>中说:-->
-                            <!--<br/><span class="recent-comment" th:text="${ConmentMessage.content}">OωO</span></div>-->
-                    <!--</a>-->
-                <!--</li>-->
-            <!--</ul>-->
-        <!--</div>-->
 
         <div class="giligili-item">
             <header class="giligili-item-header"><h3 class="giligili-item-title"><i
@@ -277,9 +150,13 @@
                 <li th:each="ConmentMessage:${recentConmentList}">
                     <a href="" th:href="'/blogDetails/'+${ConmentMessage.blogId}+'/#comments'"
                        title="suye" th:title="${ConmentMessage.blogName}"> <img alt=''
-                                                                                src='front/img/avatar.png' th:src="${ConmentMessage.visitor.avatar}"
-                                                                                class='avatar avatar-36 photo' height='36' width='36'/>
-                        <div class="right-box"><span class="author" th:text="${ConmentMessage.visitor.name}">suye</span>于<span th:text="${ConmentMessage.time}">3分钟前</span>在<span class="title" th:text="${ConmentMessage.blogName}">「WordPress响应式主题Memory」</span>中说:
+                                                                                src='front/img/avatar.png'
+                                                                                th:src="${ConmentMessage.visitor.avatar}"
+                                                                                class='avatar avatar-36 photo'
+                                                                                height='36' width='36'/>
+                        <div class="right-box"><span class="author" th:text="${ConmentMessage.visitor.name}">suye</span>于<span
+                                th:text="${ConmentMessage.time}">3分钟前</span>在<span class="title"
+                                                                                       th:text="${ConmentMessage.blogName}">「WordPress响应式主题Memory」</span>中说:
                             <br/><span class="recent-comment" th:text="${ConmentMessage.content}">OωO</span></div>
                     </a>
                 </li>
@@ -292,10 +169,11 @@
         <div class="giligili-item breadcrumbs">当前位置：
             <div itemscope itemtype="http://schema.org/WebPage" id="crumbs">
                 <!--<ul th:each="RunningTrack:${runningTrackList}">-->
-                    <!--<a  itemprop="breadcrumb" href="/index" th:href="${RunningTrack.url}" th:text="${RunningTrack.name}">首页</a> >-->
+                <!--<a  itemprop="breadcrumb" href="/index" th:href="${RunningTrack.url}" th:text="${RunningTrack.name}">首页</a> >-->
                 <!--</ul>-->
                 <th:block th:each="RunningTrack:${runningTrackList}">
-                    <a itemprop="breadcrumb" href="/index" th:href="${RunningTrack.url}" th:text="${RunningTrack.name}">首页</a> >
+                    <a itemprop="breadcrumb" href="/index" th:href="${RunningTrack.url}" th:text="${RunningTrack.name}">首页</a>
+                    >
                 </th:block>
 
                 <!--<a itemprop="breadcrumb" href="https://shawnzeng.com/category/news">大新闻</a> >-->
@@ -308,13 +186,14 @@
             <article class="giligili-item post" id="shuoshuo" th:if="${blogDatailsMessage.isTalk} eq 1">
                 <div class="post-info">
                     <div class="post-author">
-                        <a href="javascript:void(0);" title="由Suyeq发布" rel="author">Suyeq</a>
+                        <a href="javascript:void(0);" title="由CCIOC发布" rel="author">CCIOC</a>
                     </div>
-                    <div class="post-meta"> <i class="giligili giligili-time"></i>
+                    <div class="post-meta"><i class="giligili giligili-time"></i>
                         <time itemprop="datePublished" th:text="${blogDatailsMessage.time}">2月前</time>&nbsp;•&nbsp;
-                        <span class="post-view"><i class="giligili giligili-view"></i> <a href="javascript:void(0);" th:text="${blogDatailsMessage.readnum}">714</a></span>&nbsp;•&nbsp;
+                        <span class="post-view"><i class="giligili giligili-view"></i> <a href="javascript:void(0);"
+                                                                                          th:text="${blogDatailsMessage.readnum}">714</a></span>&nbsp;•&nbsp;
                         <span class="post-comment-num"><i class="giligili giligili-comment"></i>
-                <a href="javascript:void(0);" th:text="${blogDatailsMessage.conmentnum}">7</a>
+                        <a href="javascript:void(0);" th:text="${blogDatailsMessage.conmentnum}">7</a>
                           </span>
                         <span></span>
                     </div>
@@ -326,8 +205,12 @@
                                 </p>
                                 <th:block th:if="${blogDatailsMessage.imgUrl}">
                                     <div>
-                                        <a href="https://shawnzeng.com/wp-content/uploads/2018/10/0CC153A8DBAD366734A9D100ECF17583-1.jpg" th:href="${blogDatailsMessage.imgUrl}" data-fancybox="gallery" class="no-des">
-                                            <img src="https://shawnzeng.com/wp-content/uploads/2018/10/0CC153A8DBAD366734A9D100ECF17583-1.jpg" th:src="${blogDatailsMessage.imgUrl}" alt="" width="auto" height="250px">
+                                        <a href="https://shawnzeng.com/wp-content/uploads/2018/10/0CC153A8DBAD366734A9D100ECF17583-1.jpg"
+                                           th:href="${blogDatailsMessage.imgUrl}" data-fancybox="gallery"
+                                           class="no-des">
+                                            <img src="https://shawnzeng.com/wp-content/uploads/2018/10/0CC153A8DBAD366734A9D100ECF17583-1.jpg"
+                                                 th:src="${blogDatailsMessage.imgUrl}" alt="" width="auto"
+                                                 height="250px">
                                         </a>
                                     </div>
                                 </th:block>
@@ -336,37 +219,41 @@
                         </div>
                     </div>
                 </div>
-                <img alt="" src="http://localhost:8080/front/img/lem6.jpg"  th:src="@{/front/img/lem6.jpg}" class="avatar avatar-48 photo post-author-avatar" height="48" width="48">
+                <img alt="" src="http://localhost:8080/front/img/lem6.jpg" th:src="@{/front/img/lem6.jpg}"
+                     class="avatar avatar-48 photo post-author-avatar" height="48" width="48">
                 <i class="giligili giligili-certify-3"></i>
             </article>
 
             <article class="giligili-item post" id="post" th:if="${blogDatailsMessage.isTalk} eq 0">
                 <div class="post-info">
                     <div class="post-author">
-                        <a href="#" title="由Suyeq发布" rel="author">Suyeq</a>
+                        <a href="#" title="由CCIOC发布" rel="author">CCIOC</a>
                     </div>
                     <div class="post-meta"><i class="giligili giligili-time"></i>
                         <time itemprop="datePublished" th:text="${blogDatailsMessage.time}">4月前</time>
-                        &nbsp;•&nbsp;<span class="post-view"><i class="giligili giligili-view"></i> <a href="javascript:void(0);" th:text="${blogDatailsMessage.readnum}">3.93k</a></span>
+                        &nbsp;•&nbsp;<span class="post-view"><i class="giligili giligili-view"></i> <a
+                                href="javascript:void(0);" th:text="${blogDatailsMessage.readnum}">3.93k</a></span>
                         &nbsp;•&nbsp; <span class="post-comment-num"><i class="giligili giligili-comment"></i>
-                                            <a href="javascript:void(0);"th:text="${blogDatailsMessage.conmentnum}">49</a>
+                                            <a href="javascript:void(0);"
+                                               th:text="${blogDatailsMessage.conmentnum}">49</a>
                                       </span>
                         <span></span>
                     </div>
                     <div class="post-preface">
-                    <text th:text="${blogDatailsMessage.describ}">
-                    从实习后期开始写的主题，期间断断续续，今天终于写出第一版了！这套主题是在写完Memory之后写的，所以手法娴熟了很多，大家可以来尝试一下哦！另外我也会开始着手于重构Memory主题~
-                    </text>
+                        <text th:text="${blogDatailsMessage.describ}">
+                            从实习后期开始写的主题，期间断断续续，今天终于写出第一版了！这套主题是在写完Memory之后写的，所以手法娴熟了很多，大家可以来尝试一下哦！另外我也会开始着手于重构Memory主题~
+                        </text>
                     </div>
                     <div class="post-content">
                         <img width="1646" height="1015"
-                        src="https://images3.alphacoders.com/734/734139.png" th:src="${blogDatailsMessage.imgUrl}"
-                        class="attachment-full size-full wp-post-image" alt=""
-                        sizes="(max-width: 1646px) 100vw, 1646px"/>
+                             src="https://images3.alphacoders.com/734/734139.png" th:src="${blogDatailsMessage.imgUrl}"
+                             class="attachment-full size-full wp-post-image" alt=""
+                             sizes="(max-width: 1646px) 100vw, 1646px"/>
 
                         <div class="text-info">
-                            <h3 class="post-title" th:text="${blogDatailsMessage.title}">WordPress响应式二次元主题Giligili</h3>
-                            <div id="uniquevontent" class="content"  th:text="${blogDatailsMessage.htmlcontent}">
+                            <h3 class="post-title" th:text="${blogDatailsMessage.title}">
+                                WordPress响应式二次元主题Giligili</h3>
+                            <div id="uniquevontent" class="content" th:text="${blogDatailsMessage.htmlcontent}">
                                 ```java
                                 int a=10;
                                 ```
@@ -375,7 +262,9 @@
                             <!--标签-->
                             <span class="tags">
                                 <ul>
-                                    <li class="tag" th:each="Label:${blogDatailsMessage.labelList}"><a href="javascript:void(0);" rel="tag" th:text="${Label.name}">Giligili</a></li>
+                                    <li class="tag" th:each="Label:${blogDatailsMessage.labelList}"><a
+                                            href="javascript:void(0);" rel="tag"
+                                            th:text="${Label.name}">Giligili</a></li>
                                     <!--<li class="tag"><a href="javascript:void(0);" rel="tag">WordPress</a></li>-->
                                     <!--<li class="tag"><a href="javascript:void(0);" rel="tag">主题</a></li>-->
                                 </ul>
@@ -386,7 +275,9 @@
                     <!--分类-->
                     <span class="category">
                         <ul class="post-categories">
-                            <li th:each="Category:${blogDatailsMessage.categoryList}"><a href="javascript:void(0);" rel="category tag" th:text="${Category.name}">大新闻</a></li>
+                            <li th:each="Category:${blogDatailsMessage.categoryList}"><a href="javascript:void(0);"
+                                                                                         rel="category tag"
+                                                                                         th:text="${Category.name}">大新闻</a></li>
                             <!--<li><a href="https://shawnzeng.com/category/growth" rel="category tag">成长路</a></li>-->
                         </ul>
                     </span>
@@ -399,14 +290,18 @@
 
 
             <div class="giligili-post-extra giligili-item">
-                <div><span class="post-like"><a href="javascript:;" data-action="blog_zan" data-id="2518" class="" th:attr="data-id=${blogDatailsMessage.id}"> <i
-                        class="giligili giligili-zan"></i> 点赞 <span class="count" th:text="${blogDatailsMessage.votenum}">27 </span> </a> </span></div>
+                <div><span class="post-like"><a href="javascript:;" data-action="blog_zan" data-id="2518" class=""
+                                                th:attr="data-id=${blogDatailsMessage.id}"> <i
+                        class="giligili giligili-zan"></i> 点赞 <span class="count"
+                                                                      th:text="${blogDatailsMessage.votenum}">27 </span> </a> </span>
+                </div>
                 <div class="giligili-pay-box"><i class="giligili giligili-Bbi"></i> 打赏
                     <div class="pay-box">
-                        <div class="pay-header"><span>请作者吃个鸡腿！</span> <i class="giligili giligili-close"></i></div>
+                        <div class="pay-header"><span>请作者吃个鸡腿！</span> <i class="giligili giligili-close"></i>
+                        </div>
                         <div class="pay-body">
                             <h3>扫一扫支付</h3> <img class="alipay chosen"
-                                                src="https://shawnzeng.com/wp-content/uploads/2017/10/zhifubaodonate.png"/>
+                                                     src="https://shawnzeng.com/wp-content/uploads/2017/10/zhifubaodonate.png"/>
                             <img class="wechatpay"
                                  src="https://shawnzeng.com/wp-content/uploads/2017/10/weixindonate.png"/>
                             <div class="pay-chose"><a class="alibutton chosen"><img
@@ -433,7 +328,8 @@
                 <!--关闭评论-->
                 <th:block th:if="${blogDatailsMessage.iscomment} eq 0">
                     <div id="comments">
-                        <ol class="giligili-comments"><p class="center"><i class="giligili giligili-error"></i> 评论功能已经关闭!
+                        <ol class="giligili-comments"><p class="center"><i class="giligili giligili-error"></i>
+                            评论功能已经关闭!
                         </p></ol>
                         <div id="pagination">
                             <div class="giligili-comments-page"></div>
@@ -445,33 +341,47 @@
                     <!--发表评论-->
                     <div class="comment-respond" id="respond">
                         <h3 id="reply-title" class="comment-title comment-reply-title">
-                            评论<a rel="nofollow" id="cancel-comment-reply-link" href="/wordpress-theme-giligili.html#respond" style="display:none;">放弃治疗</a>
+                            评论<a rel="nofollow" id="cancel-comment-reply-link"
+                                   href="/wordpress-theme-giligili.html#respond" style="display:none;">放弃治疗</a>
                         </h3>
-                        <form name="comment-form" class="comment-form" id="comment-form" method="post" action="/addConmentAndVisitor">
+                        <form name="comment-form" class="comment-form" id="comment-form" method="post"
+                              action="/addConmentAndVisitor">
                             <div id="comment-info">
                                 <div class="commentator">
-                                    <img alt='' src='https://secure.gravatar.com/avatar/f54bcbf60236951cc8b0f4fde9538510?s=48&#038;d=https%3A%2F%2Fshawnzeng.com%2Fwp-content%2Fthemes%2FGiligili%2Fimg%2Fcomment-avatar.png&#038;r=g'
+                                    <img alt=''
+                                         src='https://secure.gravatar.com/avatar/f54bcbf60236951cc8b0f4fde9538510?s=48&#038;d=https%3A%2F%2Fshawnzeng.com%2Fwp-content%2Fthemes%2FGiligili%2Fimg%2Fcomment-avatar.png&#038;r=g'
                                          srcset='https://secure.gravatar.com/avatar/f54bcbf60236951cc8b0f4fde9538510?s=96&#038;d=https%3A%2F%2Fshawnzeng.com%2Fwp-content%2Fthemes%2FGiligili%2Fimg%2Fcomment-avatar.png&#038;r=g 2x'
                                          class='avatar avatar-48 photo' height='48' width='48'/>
                                 </div>
                                 <div class="comment-text">
                                     <div class="comment-input">
-                                        <input type="text" name="author" value="" class="text-input" id="comment-author" placeholder="昵称 *">
-                                        <input type="text" name="email" value="" class="text-input" id="comment-email" placeholder="邮箱 *">
-                                        <input type="text" name="url" value="" class="text-input" id="comment-url" placeholder="网址">
-                                        <input type='text' name='sum' class='text-input sum' id='comment-validate' value='' placeholder='4 + 0 = ?' th:placeholder="${num1}+' + '+${num2}+' = ？'">
+                                        <input type="text" name="author" value="" class="text-input" id="comment-author"
+                                               placeholder="昵称 *">
+                                        <input type="text" name="email" value="" class="text-input" id="comment-email"
+                                               placeholder="邮箱 *">
+                                        <input type="text" name="url" value="" class="text-input" id="comment-url"
+                                               placeholder="网址">
+                                        <input type='text' name='sum' class='text-input sum' id='comment-validate'
+                                               value='' placeholder='4 + 0 = ?'
+                                               th:placeholder="${num1}+' + '+${num2}+' = ？'">
                                         <input type='hidden' name='num1' value='4' th:value="${sum}">
                                         <input type='hidden' name='num2' value='0'>
                                     </div>
 
                                     <div class="comment-s">
-                                        <textarea class="text-input error" id="comment"  name="comment" rows="8" cols="45" aria-required="true" th:placeholder="'一言：'+${classicLanguage}" placeholder="一言：努力是不会背叛自己的，虽然梦想有时会背叛自己。"></textarea>
+                                        <textarea class="text-input error" id="comment" name="comment" rows="8"
+                                                  cols="45" aria-required="true"
+                                                  th:placeholder="'一言：'+${classicLanguage}"
+                                                  placeholder="一言：努力是不会背叛自己的，虽然梦想有时会背叛自己。"></textarea>
                                         <div class="OwO no-touch"></div>
-                                        <button type="submit" name="submit" class="comment-submit push-status">发表评论</button>
+                                        <button type="submit" name="submit" class="comment-submit push-status">
+                                            发表评论
+                                        </button>
                                     </div>
                                 </div>
                             </div>
-                            <input type='hidden' name='comment_post_ID' value='2518' id='comment_post_ID' th:value="${blogDatailsMessage.id}"/>
+                            <input type='hidden' name='comment_post_ID' value='2518' id='comment_post_ID'
+                                   th:value="${blogDatailsMessage.id}"/>
                             <input type='hidden' name='comment_parent' id='comment_parent' value='0'/>
                         </form>
                     </div>
@@ -483,10 +393,15 @@
                         <div id="pagination">
                             <div class="giligili-comments-page">
                                 <th:block th:each="page:${conmentPages}">
-                                    <a class="prev page-numbers" href="" th:if="${pageStat.count} eq 1" th:href="'/loadMore/'+${blogDatailsMessage.id}+'/'+(${pageStat.size}-1)">上一页</a>
-                                    <a class='page-numbers' href='' th:if="${pageStat.count} lt ${pageStat.size}" th:href="'/loadMore/'+${blogDatailsMessage.id}+'/'+${pageStat.count}" th:text="${pageStat.count}">1</a>
+                                    <a class="prev page-numbers" href="" th:if="${pageStat.count} eq 1"
+                                       th:href="'/loadMore/'+${blogDatailsMessage.id}+'/'+(${pageStat.size}-1)">上一页</a>
+                                    <a class='page-numbers' href='' th:if="${pageStat.count} lt ${pageStat.size}"
+                                       th:href="'/loadMore/'+${blogDatailsMessage.id}+'/'+${pageStat.count}"
+                                       th:text="${pageStat.count}">1</a>
                                     <!--<span aria-current='page' class='page-numbers current' th:if="${pageStat.count} eq ${pageStat.size}" th:text="${pageStat.count}">3</span>-->
-                                    <a th:href="'/loadMore/'+${blogDatailsMessage.id}+'/'+${pageStat.count}" aria-current='page' class='page-numbers current' th:if="${pageStat.count} eq ${pageStat.size}" th:text="${pageStat.count}">3</a>
+                                    <a th:href="'/loadMore/'+${blogDatailsMessage.id}+'/'+${pageStat.count}"
+                                       aria-current='page' class='page-numbers current'
+                                       th:if="${pageStat.count} eq ${pageStat.size}" th:text="${pageStat.count}">3</a>
                                 </th:block>
                                 <!--<a class="prev page-numbers" href="">上一页</a>-->
                                 <!--<a class='page-numbers' href=''>1</a>-->
@@ -503,8 +418,6 @@
     </div>
 
 
-
-
     <div id="sidebar-right" class="giligili-left">
         <div class="giligili-item">
             <header class="giligili-item-header"><h3 class="giligili-item-title"><i
@@ -514,16 +427,18 @@
                 <div class="post-lists-body">
                     <div class="post-list-item" th:each="Column:${columnList}">
                         <div class="post-list-item-container">
-                            <div class="item-thumb bg-deepgrey" style="background-image:url(front/img/穹.png);" th:style="'background-image:url(' + ${Column.imgUrl}+')'"></div>
+                            <div class="item-thumb bg-deepgrey" style="background-image:url(front/img/穹.png);"
+                                 th:style="'background-image:url(' + ${Column.imgUrl}+')'"></div>
                             <a href="#" th:href="'/column/'+${Column.id}">
                                 <div class="item-desc">
-                                    <p class="giligili" style="font-size: 10px" th:text="${Column.describ}">redis源码分析</p>
+                                    <p class="giligili" style="font-size: 10px" th:text="${Column.describ}">
+                                        redis源码分析</p>
                                 </div>
                             </a>
                             <div class="item-slant reverse-slant bg-deepgrey"></div>
                             <div class="item-slant"></div>
                             <div class="item-label">
-                                <div class="giligili item-title" >
+                                <div class="giligili item-title">
                                     <p th:text="${Column.name}">Redis源码分析</p>
                                 </div>
                             </div>
@@ -539,14 +454,13 @@
         </div>
 
 
-
         <!--标签云-->
-        <div class="giligili-item" >
+        <div class="giligili-item">
             <header class="giligili-item-header"><h3 class="giligili-item-title"><i class="giligili giligili-tags"></i>
                 标签云</h3></header>
             <div class="tagcloud">
                 <th:block th:each="Label:${labelList}">
-                    <a href="#" th:href="'/label/'+${Label.id}"  th:text="${Label.name}">3D</a>
+                    <a href="#" th:href="'/label/'+${Label.id}" th:text="${Label.name}">3D</a>
                 </th:block>
             </div>
         </div>
@@ -560,7 +474,9 @@
                 </h3>
             </header>
             <div class="row" th:each="Category:${categoryList}">
-                <div style="float: left;margin-left: 5px"><a href="#" th:href="'/category/'+${Category.id}" title=""  th:title="${Category.name}" th:text="${Category.name}">JavaWeb</a></div>
+                <div style="float: left;margin-left: 5px"><a href="#" th:href="'/category/'+${Category.id}" title=""
+                                                             th:title="${Category.name}" th:text="${Category.name}">JavaWeb</a>
+                </div>
                 <div style="float: right;"><p th:text="${Category.blognum}+' 篇'">12篇</p></div>
             </div>
         </div>
@@ -572,7 +488,8 @@
             href="http://www.miitbeian.gov.cn">黑ICP备17000197号-1</a> <br/>Theme <a
             href="#" target="_blank">Giligili</a> By <a
             href="#" target="_blank">Suyeq</a> With <i class="giligili giligili-heart-o throb"></i>
-        | All Rights Reserved<br/><span class="my-face">(●'◡'●)ﾉ</span>本博客已萌萌哒运行了<span id="span_dt_dt"></span></p>
+        | All Rights Reserved<br/><span class="my-face">(●'◡'●)ﾉ</span>本博客已萌萌哒运行了<span id="span_dt_dt"></span>
+    </p>
 
 
     <div id="landlord" style="left:0px;bottom:0px;">
@@ -580,21 +497,23 @@
         <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
         <div class="live_talk_input_body">
             <div class="live_talk_input_name_body">
-                <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off" placeholder="你的名字" />
+                <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off"
+                       placeholder="你的名字"/>
             </div>
             <div class="live_talk_input_text_body">
-                <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off" placeholder="要和我聊什么呀？"/>
+                <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off"
+                       placeholder="要和我聊什么呀？"/>
                 <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
             </div>
         </div>
-        <input name="live_talk" id="live_talk" value="1" type="hidden" />
+        <input name="live_talk" id="live_talk" value="1" type="hidden"/>
         <div class="live_ico_box">
             <div class="live_ico_item type_info" id="showInfoBtn"></div>
             <div class="live_ico_item type_talk" id="showTalkBtn"></div>
             <div class="live_ico_item type_music" id="musicButton"></div>
             <div class="live_ico_item type_youdu" id="youduButton"></div>
             <div class="live_ico_item type_quit" id="hideButton"></div>
-            <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
+            <input name="live_statu_val" id="live_statu_val" value="0" type="hidden"/>
             <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
             <input name="live2dBGM" value="https://t1.aixinxi.net/o_1c52p4qbp15idv6bl55h381moha.mp3" type="hidden">
             <input name="live2dBGM" value="https://t1.aixinxi.net/o_1c52p8frrlmf1aled1e14m56una.mp3" type="hidden">
@@ -612,24 +531,28 @@
     "commentEditAgain": "0",
     "loadPjax": "1"
 };</script>
-<script type='text/javascript' src='http://localhost:8080/front/js/jquery-3.2.1.min.js' th:src="@{/front/js/jquery-3.2.1.min.js}"></script>
-<script type='text/javascript' src='http://localhost:8080/front/js/wp-embed.min.js' th:href="@{/front/js/wp-embed.min.js}"></script>
+<script type='text/javascript' src='http://localhost:8080/front/js/jquery-3.2.1.min.js'
+        th:src="@{/front/js/jquery-3.2.1.min.js}"></script>
+<script type='text/javascript' src='http://localhost:8080/front/js/wp-embed.min.js'
+        th:href="@{/front/js/wp-embed.min.js}"></script>
 <script type='text/javascript' src='http://localhost:8080/front/js/func.js' th:href="@{/front/js/func.js}"></script>
-<script type='text/javascript' src='http://localhost:8080/front/js/support.js' th:href="@{/front/js/support.js}"></script>
+<script type='text/javascript' src='http://localhost:8080/front/js/support.js'
+        th:href="@{/front/js/support.js}"></script>
 <script type='text/javascript' src='http://localhost:8080/front/js/app.js' th:href="@{/front/js/app.js}"></script>
 <!--解析markdown语法-->
-<script src="http://localhost:8080/front/showdown-master/dist/showdown.js" th:src="@{/front/showdown-master/dist/showdown.js}"></script>
+<script src="http://localhost:8080/front/showdown-master/dist/showdown.js"
+        th:src="@{/front/showdown-master/dist/showdown.js}"></script>
 <script type="text/javascript">
     //获取要转换的文字
-   // window.onload=function(){
-        var text = document.getElementById("uniquevontent").innerText;
-        //创建实例
-        var converter = new showdown.Converter();
-        //进行转换
-        var html = converter.makeHtml(text);
-        //展示到对应的地方  result便是id名称
-        document.getElementById("uniquevontent").innerHTML = html;
-   // }
+    // window.onload=function(){
+    var text = document.getElementById("uniquevontent").innerText;
+    //创建实例
+    var converter = new showdown.Converter();
+    //进行转换
+    var html = converter.makeHtml(text);
+    //展示到对应的地方  result便是id名称
+    document.getElementById("uniquevontent").innerHTML = html;
+    // }
 </script>
 
 <!--云标签-->
@@ -648,8 +571,10 @@
     var message_Path = '/live2d/';//资源目录，如果目录不对请更改
     var talkAPI = "";//如果有类似图灵机器人的聊天接口请填写接口路径
 </script>
-<script type="text/javascript" src="http://localhost:8080/front/live2d/js/live2d.js" th:src="@{/front/live2d/js/live2d.js}"></script>
-<script type="text/javascript" src="http://localhost:8080/front/live2d/js/message.js" th:src="@{/front/live2d/js/message.js}"></script>
+<script type="text/javascript" src="http://localhost:8080/front/live2d/js/live2d.js"
+        th:src="@{/front/live2d/js/live2d.js}"></script>
+<script type="text/javascript" src="http://localhost:8080/front/live2d/js/message.js"
+        th:src="@{/front/live2d/js/message.js}"></script>
 
 <!--<script type="text/javascript" src="http://localhost:8080/front/live2d/js/live2d.js"></script>-->
 <!--<script type="text/javascript" src="http://localhost:8080/front/live2d/js/message.js"></script>-->
