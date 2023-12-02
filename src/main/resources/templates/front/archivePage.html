@@ -8,6 +8,13 @@
     <meta name="apple-mobile-web-app-capable" content="yes"/>
     <meta name="description" content="一个爱鼓捣前端的产品汪"/>
     <meta name="keywords" content="产品,前端,文艺,二次元"/>
+    <style>
+        #wp-calendar #today {
+            background-color: #EB5055; /* 选中红色背景 */
+            border-radius: 50%; /* 将单元格变为圆形 */
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* 圆形白色阴影 */
+        }
+    </style>
     <!--[if lt IE 9]-->
     <script src="//cdn.bootcss.com/html5shiv/r29/html5.js"></script>
     <!--[endif]-->
@@ -20,13 +27,13 @@
     <link href="front/css/Column.css" rel="stylesheet">
     <link type="text/css" media="all" href="front/css/allPage.css" rel="stylesheet"/>
     <link rel="stylesheet" href="front/tagcloud/tagcloud.min.css">
-    <link rel="stylesheet" href="front/live2d/css/live2d.css" />
-    <title>一两清风，半盏明月</title></head>
+    <link rel="stylesheet" href="front/live2d/css/live2d.css"/>
+    <title>没有爱，就看不见</title></head>
 <body>
 <header id="header">
     <div id="menu-blur-bg"></div>
     <div id="menu-blur"></div>
-    <div id="menu-pc"><h1 id="logo"><a href="/index">阑珊处</a></h1> <span id="mobile-menu"> <i
+    <div id="menu-pc"><h1 id="logo"><a href="/index">海猫鸣泣之时</a></h1> <span id="mobile-menu"> <i
             class="giligili giligili-menu"></i> </span>
         <div id="menu-main" class="menu-main">
             <ul>
@@ -77,7 +84,7 @@
         <div id="user-card" class="giligili-item">
             <div id="user-card-bg"></div>
             <a id="user-card-name">
-                <i class="giligili giligili-at"></i>Suyeq
+                <i class="giligili giligili-at"></i>CCIOC
             </a>
             <div id="user-card-info">
                 <a id="user-card-article" class="giligili-left" href="#">
@@ -92,7 +99,7 @@
             <img alt=''
                  src='http://localhost:8080/front/img/lem6.jpg' th:src="@{front/img/lem6.jpg}"
                  srcset='front/img/lem6.jpg 2x'
-                 class='avatar avatar-56 photo user-card-avatar' height='56' width='56' /> <i
+                 class='avatar avatar-56 photo user-card-avatar' height='56' width='56'/> <i
                 class="giligili giligili-certify-3"></i>
         </div>
         <div id="user-info" class="giligili-item">
@@ -234,7 +241,9 @@
                        title="suye"> <img alt=''
                                           src='front/img/avatar.png' th:src="@{front/img/avatar.png}"
                                           class='avatar avatar-36 photo' height='36' width='36'/>
-                        <div class="right-box"><span class="author" th:text="${ConmentMessage.visitor.name}">suye</span>于<span th:text="${ConmentMessage.time}">3分钟前</span>在<span class="title" th:text="${ConmentMessage.blogName}">「WordPress响应式主题Memory」</span>中说:
+                        <div class="right-box"><span class="author" th:text="${ConmentMessage.visitor.name}">suye</span>于<span
+                                th:text="${ConmentMessage.time}">3分钟前</span>在<span class="title"
+                                                                                       th:text="${ConmentMessage.blogName}">「WordPress响应式主题Memory」</span>中说:
                             <br/><span class="recent-comment" th:text="${ConmentMessage.content}">OωO</span></div>
                     </a>
                 </li>
@@ -244,70 +253,78 @@
         <div class="giligili-item">
             <div id="calendar_wrap" class="calendar_wrap">
                 <table id="wp-calendar">
-                    <caption>2018年十一月</caption>
+                    <caption id="month-caption"></caption>
                     <thead>
-                    <tr>
-                        <th scope="col" title="星期一">一</th>
-                        <th scope="col" title="星期二">二</th>
-                        <th scope="col" title="星期三">三</th>
-                        <th scope="col" title="星期四">四</th>
-                        <th scope="col" title="星期五">五</th>
-                        <th scope="col" title="星期六">六</th>
-                        <th scope="col" title="星期日">日</th>
-                    </tr>
+                    <tr id="weekdays-row"></tr>
                     </thead>
                     <tfoot>
                     <tr>
-                        <td colspan="3" id="prev"><a href="#">&laquo; 10月</a></td>
+                        <td colspan="3" id="prev">
+                            <button onclick="changeMonth(-1)">&laquo; 上个月</button>
+                        </td>
                         <td class="pad">&nbsp;</td>
-                        <td colspan="3" id="next" class="pad">&nbsp;</td>
+                        <td colspan="3" id="next" class="pad">
+                            <button onclick="changeMonth(1)">下个月 &raquo;</button>
+                        </td>
                     </tr>
                     </tfoot>
-                    <tbody>
-                    <tr>
-                        <td colspan="3" class="pad">&nbsp;</td>
-                        <td>1</td>
-                        <td>2</td>
-                        <td>3</td>
-                        <td>4</td>
-                    </tr>
-                    <tr>
-                        <td>5</td>
-                        <td id="today">6</td>
-                        <td>7</td>
-                        <td>8</td>
-                        <td>9</td>
-                        <td>10</td>
-                        <td>11</td>
-                    </tr>
-                    <tr>
-                        <td>12</td>
-                        <td>13</td>
-                        <td>14</td>
-                        <td>15</td>
-                        <td>16</td>
-                        <td>17</td>
-                        <td>18</td>
-                    </tr>
-                    <tr>
-                        <td>19</td>
-                        <td>20</td>
-                        <td>21</td>
-                        <td>22</td>
-                        <td>23</td>
-                        <td>24</td>
-                        <td>25</td>
-                    </tr>
-                    <tr>
-                        <td>26</td>
-                        <td>27</td>
-                        <td>28</td>
-                        <td>29</td>
-                        <td>30</td>
-                        <td class="pad" colspan="2">&nbsp;</td>
-                    </tr>
-                    </tbody>
+                    <tbody id="calendar-body"></tbody>
                 </table>
+
+                <script>
+                    const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+                    const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
+                    let currentDate = new Date();
+                    let currentMonth = currentDate.getMonth();
+                    let currentYear = currentDate.getFullYear();
+
+                    function generateCalendar() {
+                        const monthCaption = document.getElementById("month-caption");
+                        const weekdaysRow = document.getElementById("weekdays-row");
+                        const calendarBody = document.getElementById("calendar-body");
+                        monthCaption.textContent = `${currentYear}年${months[currentMonth]}`;
+                        weekdaysRow.innerHTML = "";
+                        calendarBody.innerHTML = "";
+                        weekdays.forEach(day => {
+                            const th = document.createElement("th");
+                            th.textContent = day;
+                            weekdaysRow.appendChild(th);
+                        });
+                        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+                        let dayCount = 1;
+                        for (let i = 0; i < 6; i++) {
+                            const row = document.createElement("tr");
+                            for (let j = 0; j < 7; j++) {
+                                const cell = document.createElement("td");
+                                if (i === 0 && j < new Date(currentYear, currentMonth, 1).getDay()) {
+                                    cell.textContent = "";
+                                } else if (dayCount <= daysInMonth) {
+                                    cell.textContent = dayCount;
+                                    if (dayCount === new Date().getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
+                                        cell.id = "today";
+                                    }
+                                    dayCount++;
+                                }
+                                row.appendChild(cell);
+                            }
+                            calendarBody.appendChild(row);
+                        }
+                    }
+
+                    function changeMonth(change) {
+                        currentMonth += change;
+                        if (currentMonth < 0) {
+                            currentMonth = 11; // December
+                            currentYear--;
+                        } else if (currentMonth > 11) {
+                            currentMonth = 0; // January
+                            currentYear++;
+                        }
+                        generateCalendar();
+                    }
+
+                    generateCalendar();
+                </script>
             </div>
         </div>
     </div>
@@ -327,8 +344,10 @@
                     <div class="post-meta">
                         <i class="giligili giligili-time">
                         </i>
-                        <time itemprop="datePublished" th:text="${blogMessage.time}">4月前</time> &nbsp;•&nbsp; <span class="post-view"><i
-                            class="giligili giligili-view"></i> <th:block th:text="${blogMessage.readnum}">1.03k</th:block></span>&nbsp;•&nbsp;
+                        <time itemprop="datePublished" th:text="${blogMessage.time}">4月前</time> &nbsp;•&nbsp; <span
+                            class="post-view"><i
+                            class="giligili giligili-view"></i> <th:block
+                            th:text="${blogMessage.readnum}">1.03k</th:block></span>&nbsp;•&nbsp;
                         <span class="post-comment-num">
                             <i class="giligili giligili-comment"></i>
                             <span>评论已关闭</span>
@@ -341,20 +360,24 @@
                             <div class="content">
                                 <div id="archives">
                                     <th:block th:each="ArchiveMessage:${archiveMessageList}">
-                                        <h3 class="al_year" th:text="${ArchiveMessage.dateTitle}+'&nbsp;年'">2018 年</h3>
-                                        <ul class="al_mon_list" >
+                                        <h3 class="al_year" th:text="${ArchiveMessage.dateTitle}+'&nbsp;年'">2018
+                                            年</h3>
+                                        <ul class="al_mon_list">
                                             <th:block th:each="ArchiveMessageMonth:${ArchiveMessage.list}">
                                                 <li>
-                                                    <span class="al_mon" th:text="${ArchiveMessageMonth.dateTitle}+'月'">10月</span>
-                                                        <ul class="al_post_list">
-                                                            <th:block th:each="ArchiveMessageDay:${ArchiveMessageMonth.list}">
+                                                    <span class="al_mon"
+                                                          th:text="${ArchiveMessageMonth.dateTitle}+'月'">10月</span>
+                                                    <ul class="al_post_list">
+                                                        <th:block
+                                                                th:each="ArchiveMessageDay:${ArchiveMessageMonth.list}">
                                                             <li>
-                                                                <a href="javascript:void(0);" th:text="${ArchiveMessageDay.dateTitle}+'日:'+${ArchiveMessageDay.title}">22日:
+                                                                <a href="javascript:void(0);"
+                                                                   th:text="${ArchiveMessageDay.dateTitle}+'日:'+${ArchiveMessageDay.title}">22日:
                                                                     记一次参加QQ看点问答比赛的经历……(1条评论)
                                                                 </a>
                                                             </li>
-                                                            </th:block>
-                                                        </ul>
+                                                        </th:block>
+                                                    </ul>
                                                 </li>
                                             </th:block>
                                         </ul>
@@ -369,14 +392,18 @@
                      class='avatar avatar-48 photo post-author-avatar' height='48' width='48'/> <i
                     class="giligili giligili-certify-3"></i></article>
             <div class="giligili-post-extra giligili-item">
-                <div><span class="post-like"><a href="javascript:;" data-action="blog_zan" data-id="2551" class="" th:attr="data-id=${blogMessage.id}"> <i
-                        class="giligili giligili-zan"></i> 点赞 <span class="count" th:text="${blogMessage.votenum}">0 </span> </a> </span></div>
+                <div><span class="post-like"><a href="javascript:;" data-action="blog_zan" data-id="2551" class=""
+                                                th:attr="data-id=${blogMessage.id}"> <i
+                        class="giligili giligili-zan"></i> 点赞 <span class="count"
+                                                                      th:text="${blogMessage.votenum}">0 </span> </a> </span>
+                </div>
                 <div class="giligili-pay-box"><i class="giligili giligili-Bbi"></i> 打赏
                     <div class="pay-box">
-                        <div class="pay-header"><span>请作者吃个鸡腿！</span> <i class="giligili giligili-close"></i></div>
+                        <div class="pay-header"><span>请作者吃个鸡腿！</span> <i class="giligili giligili-close"></i>
+                        </div>
                         <div class="pay-body">
                             <h3>扫一扫支付</h3> <img class="alipay chosen"
-                                                src="https://shawnzeng.com/wp-content/uploads/2017/10/zhifubaodonate.png"/>
+                                                     src="https://shawnzeng.com/wp-content/uploads/2017/10/zhifubaodonate.png"/>
                             <img class="wechatpay"
                                  src="https://shawnzeng.com/wp-content/uploads/2017/10/weixindonate.png"/>
                             <div class="pay-chose"><a class="alibutton chosen"><img
@@ -413,26 +440,27 @@
     </div>
 
 
-
     <div id="sidebar-right" class="giligili-left">
         <div class="giligili-item">
             <header class="giligili-item-header"><h3 class="giligili-item-title"><i
                     class="giligili giligili-visitors"></i> 博主专栏</h3></header>
 
-            <div class="post-lists " >
+            <div class="post-lists ">
                 <div class="post-lists-body">
                     <div class="post-list-item" th:each="Column:${columnList}">
                         <div class="post-list-item-container">
-                            <div class="item-thumb bg-deepgrey" style="background-image:url(front/img/穹.png);" th:style="'background-image:url(' + ${Column.imgUrl}+')'"></div>
+                            <div class="item-thumb bg-deepgrey" style="background-image:url(front/img/穹.png);"
+                                 th:style="'background-image:url(' + ${Column.imgUrl}+')'"></div>
                             <a href="#">
                                 <div class="item-desc">
-                                    <p class="giligili" style="font-size: 10px" th:text="${Column.describ}">redis源码分析</p>
+                                    <p class="giligili" style="font-size: 10px" th:text="${Column.describ}">
+                                        redis源码分析</p>
                                 </div>
                             </a>
                             <div class="item-slant reverse-slant bg-deepgrey"></div>
                             <div class="item-slant"></div>
                             <div class="item-label">
-                                <div class="giligili item-title" >
+                                <div class="giligili item-title">
                                     <p th:text="${Column.name}">Redis源码分析</p>
                                 </div>
                             </div>
@@ -448,7 +476,7 @@
         </div>
 
         <!--标签云-->
-        <div class="giligili-item" >
+        <div class="giligili-item">
             <header class="giligili-item-header"><h3 class="giligili-item-title"><i class="giligili giligili-tags"></i>
                 标签云</h3></header>
             <div class="tagcloud">
@@ -464,7 +492,8 @@
                 </h3>
             </header>
             <div class="row" th:each="Category:${categoryList}">
-                <div style="float: left;margin-left: 5px"><a href="#" title="" th:text="${Category.name}">JavaWeb</a></div>
+                <div style="float: left;margin-left: 5px"><a href="#" title="" th:text="${Category.name}">JavaWeb</a>
+                </div>
                 <div style="float: right;"><p th:text="${Category.blognum}+' 篇'">12篇</p></div>
             </div>
             <!--<div class="row">-->
@@ -481,11 +510,12 @@
     </div>
 </div>
 <div id="foot"><a id="back-to-top"><i class="giligili giligili-rocket"></i></a>
-    <p>版权所有 © 2017-2018 <a href="#">阑珊处</a> | <a
+    <p>版权所有 © 2017-2018 <a href="#">海猫鸣泣之时</a> | <a
             href="http://www.miitbeian.gov.cn">黑ICP备17000197号-1</a> <br/>Theme <a
             href="#" target="_blank">Giligili</a> By <a
             href="#" target="_blank">Suyeq</a> With <i class="giligili giligili-heart-o throb"></i>
-        | All Rights Reserved<br/><span class="my-face">(●'◡'●)ﾉ</span>本博客已萌萌哒运行了<span id="span_dt_dt"></span></p>
+        | All Rights Reserved<br/><span class="my-face">(●'◡'●)ﾉ</span>本博客已萌萌哒运行了<span id="span_dt_dt"></span>
+    </p>
 
 
     <div id="landlord" style="left:0px;bottom:0px;">
@@ -493,21 +523,23 @@
         <canvas id="live2d" width="500" height="560" class="live2d"></canvas>
         <div class="live_talk_input_body">
             <div class="live_talk_input_name_body">
-                <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off" placeholder="你的名字" />
+                <input name="name" type="text" class="live_talk_name white_input" id="AIuserName" autocomplete="off"
+                       placeholder="你的名字"/>
             </div>
             <div class="live_talk_input_text_body">
-                <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off" placeholder="要和我聊什么呀？"/>
+                <input name="talk" type="text" class="live_talk_talk white_input" id="AIuserText" autocomplete="off"
+                       placeholder="要和我聊什么呀？"/>
                 <button type="button" class="live_talk_send_btn" id="talk_send">发送</button>
             </div>
         </div>
-        <input name="live_talk" id="live_talk" value="1" type="hidden" />
+        <input name="live_talk" id="live_talk" value="1" type="hidden"/>
         <div class="live_ico_box">
             <div class="live_ico_item type_info" id="showInfoBtn"></div>
             <div class="live_ico_item type_talk" id="showTalkBtn"></div>
             <div class="live_ico_item type_music" id="musicButton"></div>
             <div class="live_ico_item type_youdu" id="youduButton"></div>
             <div class="live_ico_item type_quit" id="hideButton"></div>
-            <input name="live_statu_val" id="live_statu_val" value="0" type="hidden" />
+            <input name="live_statu_val" id="live_statu_val" value="0" type="hidden"/>
             <audio src="" style="display:none;" id="live2d_bgm" data-bgm="0" preload="none"></audio>
             <input name="live2dBGM" value="https://t1.aixinxi.net/o_1c52p4qbp15idv6bl55h381moha.mp3" type="hidden">
             <input name="live2dBGM" value="https://t1.aixinxi.net/o_1c52p8frrlmf1aled1e14m56una.mp3" type="hidden">

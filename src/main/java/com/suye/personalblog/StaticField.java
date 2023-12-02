@@ -37,7 +37,7 @@ public class StaticField {
 
     public static String DELETE_LABEL="删除标签";
 
-    public static String SENSITIVE_WORD="[一两清风，半盏明月]";
+    public static String SENSITIVE_WORD="[没有爱，就看不见]";
 
     public static char[] IgnoreWords={'`','~','!','@','#','$','%','^','&','*','(',')',' ','.','。','·'};
 

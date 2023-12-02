@@ -1,6 +1,5 @@
 package com.suye.personalblog.email;
 
-import com.suye.personalblog.tool.ConmentMessageConversion;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
@@ -32,7 +31,7 @@ public class SimpleSMTPEmailSend {
         System.out.println(emialSend);
         message.setFrom(emialSend);//发件人
         message.setTo(receiveEmail);//收件人
-        message.setSubject("一两清风，半盏明月");//主题
+        message.setSubject("没有爱，就看不见");//主题
         message.setText(content);//正文
         new Thread(new Runnable() {
             @Override
@@ -47,7 +46,7 @@ public class SimpleSMTPEmailSend {
         SimpleMailMessage message = new SimpleMailMessage();//消息构造器
         message.setFrom(sendEmail);//发件人
         message.setTo(receiveEmail);//收件人
-        message.setSubject("一两清风，半盏明月");//主题
+        message.setSubject("没有爱，就看不见");//主题
         message.setText(content);//正文
         new Thread(new Runnable() {
            @Override
