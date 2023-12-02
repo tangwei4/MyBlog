@@ -31,6 +31,7 @@
     <title>没有爱，就看不见</title>
     <!-- 设置网页图标 -->
     <link rel="icon" href="front/img/img.ico" type="image/x-icon">
+</head>
 <body>
 <header id="header">
     <div id="menu-blur-bg"></div>
@@ -221,61 +222,6 @@
                     </tfoot>
                     <tbody id="calendar-body"></tbody>
                 </table>
-
-                <script>
-                    const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
-                    const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
-                    let currentDate = new Date();
-                    let currentMonth = currentDate.getMonth();
-                    let currentYear = currentDate.getFullYear();
-
-                    function generateCalendar() {
-                        const monthCaption = document.getElementById("month-caption");
-                        const weekdaysRow = document.getElementById("weekdays-row");
-                        const calendarBody = document.getElementById("calendar-body");
-                        monthCaption.textContent = `${currentYear}年${months[currentMonth]}`;
-                        weekdaysRow.innerHTML = "";
-                        calendarBody.innerHTML = "";
-                        weekdays.forEach(day => {
-                            const th = document.createElement("th");
-                            th.textContent = day;
-                            weekdaysRow.appendChild(th);
-                        });
-                        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-                        let dayCount = 1;
-                        for (let i = 0; i < 6; i++) {
-                            const row = document.createElement("tr");
-                            for (let j = 0; j < 7; j++) {
-                                const cell = document.createElement("td");
-                                if (i === 0 && j < new Date(currentYear, currentMonth, 1).getDay()) {
-                                    cell.textContent = "";
-                                } else if (dayCount <= daysInMonth) {
-                                    cell.textContent = dayCount;
-                                    if (dayCount === new Date().getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
-                                        cell.id = "today";
-                                    }
-                                    dayCount++;
-                                }
-                                row.appendChild(cell);
-                            }
-                            calendarBody.appendChild(row);
-                        }
-                    }
-
-                    function changeMonth(change) {
-                        currentMonth += change;
-                        if (currentMonth < 0) {
-                            currentMonth = 11; // December
-                            currentYear--;
-                        } else if (currentMonth > 11) {
-                            currentMonth = 0; // January
-                            currentYear++;
-                        }
-                        generateCalendar();
-                    }
-
-                    generateCalendar();
-                </script>
             </div>
         </div>
     </div>
@@ -434,10 +380,6 @@
                                 <span aria-current='page' class='page-numbers current'
                                       th:if="${pageStat.count} eq ${pageStat.size}" th:text="${pageStat.count}">3</span>
                             </th:block>
-                            <!--<a class="prev page-numbers" href="">上一页</a>-->
-                            <!--<a class='page-numbers' href=''>1</a>-->
-                            <!--<a class='page-numbers' href=''>2</a>-->
-                            <!--<span aria-current='page' class='page-numbers current'>3</span>-->
                         </div>
                     </div>
 
@@ -477,7 +419,6 @@
                             <p class="giligili" style="font-size: 10px"></p>
                         </div>
                     </div>
-
                 </div>
             </div>
 
@@ -505,17 +446,7 @@
                 </div>
                 <div style="float: right;"><p th:text="${Category.blognum}+' 篇'">12篇</p></div>
             </div>
-            <!--<div class="row">-->
-            <!--<div style="float: left;"><a href="#" title="">Linux</a></div>-->
-            <!--<div style="float: right;"><p>10篇</p></div>-->
-            <!--</div>-->
-            <!--<div class="row">-->
-            <!--<div style="float: left;"><a href="#" title="">Redis</a></div>-->
-            <!--<div style="float: right;"><p>9篇</p></div>-->
-            <!--</div>-->
-
         </div>
-
     </div>
 </div>
 <div id="foot"><a id="back-to-top"><i class="giligili giligili-rocket"></i></a>
@@ -574,9 +505,7 @@
 <!--云标签-->
 <script src="http://localhost:8080/front/tagcloud/tagcloud.min.js"></script>
 <script type="text/javascript">
-    // window.onload=function(){
     tagcloud();
-    // }
 </script>
 
 <!--看板娘-->
@@ -586,6 +515,60 @@
 </script>
 <script type="text/javascript" src="http://localhost:8080/front/live2d/js/live2d.js"></script>
 <script type="text/javascript" src="http://localhost:8080/front/live2d/js/message.js"></script>
+<script>
+    const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+    const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
+    let currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+
+    function generateCalendar() {
+        const monthCaption = document.getElementById("month-caption");
+        const weekdaysRow = document.getElementById("weekdays-row");
+        const calendarBody = document.getElementById("calendar-body");
+        monthCaption.textContent = `${currentYear}年${months[currentMonth]}`;
+        weekdaysRow.innerHTML = "";
+        calendarBody.innerHTML = "";
+        weekdays.forEach(day => {
+            const th = document.createElement("th");
+            th.textContent = day;
+            weekdaysRow.appendChild(th);
+        });
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        let dayCount = 1;
+        for (let i = 0; i < 6; i++) {
+            const row = document.createElement("tr");
+            for (let j = 0; j < 7; j++) {
+                const cell = document.createElement("td");
+                if (i === 0 && j < new Date(currentYear, currentMonth, 1).getDay()) {
+                    cell.textContent = "";
+                } else if (dayCount <= daysInMonth) {
+                    cell.textContent = dayCount;
+                    if (dayCount === new Date().getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
+                        cell.id = "today";
+                    }
+                    dayCount++;
+                }
+                row.appendChild(cell);
+            }
+            calendarBody.appendChild(row);
+        }
+    }
+
+    function changeMonth(change) {
+        currentMonth += change;
+        if (currentMonth < 0) {
+            currentMonth = 11; // December
+            currentYear--;
+        } else if (currentMonth > 11) {
+            currentMonth = 0; // January
+            currentYear++;
+        }
+        generateCalendar();
+    }
+
+    generateCalendar();
+</script>
 </body>
 
 </html>

@@ -31,6 +31,7 @@
     <title>没有爱，就看不见</title>
     <!-- 设置网页图标 -->
     <link rel="icon" href="front/img/img.ico" type="image/x-icon">
+</head>
 <body>
 <header id="header">
     <div id="menu-blur-bg"></div>
@@ -115,57 +116,6 @@
                     href="https://blog.csdn.net/hackersuye">Suyeq233</a></div>
             <div class="intro">一杯敬明天，一杯敬过往</div>
         </div>
-
-        <!--<div class="widget_text giligili-item">-->
-        <!--<div class="textwidget custom-html-widget">-->
-        <!--<div style="text-align: center;"><img-->
-        <!--src="https://shawnzeng.com/wp-content/uploads/2018/07/IMG_1974.jpg"-->
-        <!--style="width: 50px;height: 50px;vertical-align: -20px;border-radius: 50%;margin-right: 5px;margin-bottom: 5px;"/><i-->
-        <!--class="giligili giligili-heart-o throb" style="color:red"></i><img-->
-        <!--src="https://shawnzeng.com/wp-content/uploads/2018/07/IMG_1970.jpg"-->
-        <!--style="width: 50px;height: 50px;vertical-align: -20px;border-radius: 50%;margin-left: 5px;margin-bottom: 5px;"/><br/>-->
-        <!--<span id="htmer_time"></span></div>-->
-        <!--<script type="text/javascript" language="javascript">function setTime() {-->
-        <!--var create_time = Math.round(new Date(Date.UTC(2018, 03, 08, 9, 21, 0)).getTime() / 1000);-->
-        <!--var timestamp = Math.round((new Date().getTime() + 8 * 60 * 60 * 1000) / 1000);-->
-        <!--currentTime = secondToDate((timestamp - create_time));-->
-        <!--currentTimeHtml = currentTime[0] + ' 年 ' + currentTime[1] + ' 天 '-->
-        <!--+ currentTime[2] + ' 时 ' + currentTime[3] + ' 分 ' + currentTime[4]-->
-        <!--+ ' 秒';-->
-        <!--document.getElementById("htmer_time").innerHTML = currentTimeHtml;-->
-        <!--}-->
-
-        <!--function secondToDate(second) {-->
-        <!--if (!second) {-->
-        <!--return 0;-->
-        <!--}-->
-        <!--var time = new Array(0, 0, 0, 0, 0);-->
-        <!--if (second >= 365 * 24 * 3600) {-->
-        <!--time[0] = parseInt(second / (365 * 24 * 3600));-->
-        <!--second %= 365 * 24 * 3600;-->
-        <!--}-->
-        <!--if (second >= 24 * 3600) {-->
-        <!--time[1] = parseInt(second / (24 * 3600));-->
-        <!--second %= 24 * 3600;-->
-        <!--}-->
-        <!--if (second >= 3600) {-->
-        <!--time[2] = parseInt(second / 3600);-->
-        <!--second %= 3600;-->
-        <!--}-->
-        <!--if (second >= 60) {-->
-        <!--time[3] = parseInt(second / 60);-->
-        <!--second %= 60;-->
-        <!--}-->
-        <!--if (second > 0) {-->
-        <!--time[4] = second;-->
-        <!--}-->
-        <!--return time;-->
-        <!--}-->
-
-        <!--setInterval(setTime, 1000);</script>-->
-        <!--</div>-->
-        <!--</div>-->
-
         <div class="widget_text giligili-item">
             <div class="textwidget custom-html-widget">
                 <script src="//cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
@@ -272,61 +222,6 @@
                     </tfoot>
                     <tbody id="calendar-body"></tbody>
                 </table>
-
-                <script>
-                    const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
-                    const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
-                    let currentDate = new Date();
-                    let currentMonth = currentDate.getMonth();
-                    let currentYear = currentDate.getFullYear();
-
-                    function generateCalendar() {
-                        const monthCaption = document.getElementById("month-caption");
-                        const weekdaysRow = document.getElementById("weekdays-row");
-                        const calendarBody = document.getElementById("calendar-body");
-                        monthCaption.textContent = `${currentYear}年${months[currentMonth]}`;
-                        weekdaysRow.innerHTML = "";
-                        calendarBody.innerHTML = "";
-                        weekdays.forEach(day => {
-                            const th = document.createElement("th");
-                            th.textContent = day;
-                            weekdaysRow.appendChild(th);
-                        });
-                        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
-                        let dayCount = 1;
-                        for (let i = 0; i < 6; i++) {
-                            const row = document.createElement("tr");
-                            for (let j = 0; j < 7; j++) {
-                                const cell = document.createElement("td");
-                                if (i === 0 && j < new Date(currentYear, currentMonth, 1).getDay()) {
-                                    cell.textContent = "";
-                                } else if (dayCount <= daysInMonth) {
-                                    cell.textContent = dayCount;
-                                    if (dayCount === new Date().getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
-                                        cell.id = "today";
-                                    }
-                                    dayCount++;
-                                }
-                                row.appendChild(cell);
-                            }
-                            calendarBody.appendChild(row);
-                        }
-                    }
-
-                    function changeMonth(change) {
-                        currentMonth += change;
-                        if (currentMonth < 0) {
-                            currentMonth = 11; // December
-                            currentYear--;
-                        } else if (currentMonth > 11) {
-                            currentMonth = 0; // January
-                            currentYear++;
-                        }
-                        generateCalendar();
-                    }
-
-                    generateCalendar();
-                </script>
             </div>
         </div>
     </div>
@@ -498,15 +393,6 @@
                 </div>
                 <div style="float: right;"><p th:text="${Category.blognum}+' 篇'">12篇</p></div>
             </div>
-            <!--<div class="row">-->
-            <!--<div style="float: left;"><a href="#" title="">Linux</a></div>-->
-            <!--<div style="float: right;"><p>10篇</p></div>-->
-            <!--</div>-->
-            <!--<div class="row">-->
-            <!--<div style="float: left;"><a href="#" title="">Redis</a></div>-->
-            <!--<div style="float: right;"><p>9篇</p></div>-->
-            <!--</div>-->
-
         </div>
 
     </div>
@@ -579,5 +465,59 @@
 </script>
 <script type="text/javascript" src="front/live2d/js/live2d.js"></script>
 <script type="text/javascript" src="front/live2d/js/message.js"></script>
+<script>
+    const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
+    const weekdays = ["一", "二", "三", "四", "五", "六", "日"];
+    let currentDate = new Date();
+    let currentMonth = currentDate.getMonth();
+    let currentYear = currentDate.getFullYear();
+
+    function generateCalendar() {
+        const monthCaption = document.getElementById("month-caption");
+        const weekdaysRow = document.getElementById("weekdays-row");
+        const calendarBody = document.getElementById("calendar-body");
+        monthCaption.textContent = `${currentYear}年${months[currentMonth]}`;
+        weekdaysRow.innerHTML = "";
+        calendarBody.innerHTML = "";
+        weekdays.forEach(day => {
+            const th = document.createElement("th");
+            th.textContent = day;
+            weekdaysRow.appendChild(th);
+        });
+        const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+        let dayCount = 1;
+        for (let i = 0; i < 6; i++) {
+            const row = document.createElement("tr");
+            for (let j = 0; j < 7; j++) {
+                const cell = document.createElement("td");
+                if (i === 0 && j < new Date(currentYear, currentMonth, 1).getDay()) {
+                    cell.textContent = "";
+                } else if (dayCount <= daysInMonth) {
+                    cell.textContent = dayCount;
+                    if (dayCount === new Date().getDate() && currentMonth === new Date().getMonth() && currentYear === new Date().getFullYear()) {
+                        cell.id = "today";
+                    }
+                    dayCount++;
+                }
+                row.appendChild(cell);
+            }
+            calendarBody.appendChild(row);
+        }
+    }
+
+    function changeMonth(change) {
+        currentMonth += change;
+        if (currentMonth < 0) {
+            currentMonth = 11; // December
+            currentYear--;
+        } else if (currentMonth > 11) {
+            currentMonth = 0; // January
+            currentYear++;
+        }
+        generateCalendar();
+    }
+
+    generateCalendar();
+</script>
 </body>
 </html>
