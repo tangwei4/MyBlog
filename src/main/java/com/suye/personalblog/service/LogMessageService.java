@@ -43,7 +43,7 @@ public class LogMessageService {
         //倒序排列
         Collections.sort(logMessageList, Comparator.comparing(LogMessage::getDate).reversed());
         //获取前面5条
-        List<LogMessage> logMessages = logMessageList.subList(0, Math.min(logMessageList.size(), 5));
+        List<LogMessage> logMessages = logMessageList.subList(0, Math.min(logMessageList.size(), 10));
         return logMessages;
     }
 }

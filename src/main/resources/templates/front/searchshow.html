@@ -161,43 +161,41 @@
 
         <div class="widget_text giligili-item">
             <div class="textwidget custom-html-widget">
-                <script src="//cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
+                <<script src="//cdn.bootcss.com/aplayer/1.5.8/APlayer.min.js"></script>
+                <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
                 <div id="aplayer1" class="aplayer"></div>
-                <script>var ap = new APlayer({
-                    element: document.getElementById('aplayer1'),
-                    autoplay:false,
-                    music: [{
-                        title: '風の住む街',
-                        author: '磯村由纪子',
-                        url: 'front/music/磯村由纪子 - 風の住む街.mp3',
-                        pic: 'front/img/风.jpg'
-                    },
-                        {
-                            title: 'ヨスガノソラ メインテーマ -記憶',
-                            author: '三輪学',
-                            url: 'front/music/三輪学 - ヨスガノソラ メインテーマ -記憶-.mp3',
-                            pic: 'front/img/穹.jpg'
+                <script>
+                    // 获取音乐文件列表的接口地址
+                    var musicListUrl = '/front/music';
+                    // 获取包含音乐的元素
+                    var musicListElement = document.getElementById('aplayer1');
+                    // 使用 jQuery 的 $.ajax 发送请求
+                    $.ajax({
+                        url: musicListUrl,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (data) {
+                            // 遍历音乐列表并添加到 APlayer 实例
+                            var musicArray = data.map(music => {
+                                return {
+                                    title: music.title,
+                                    author: music.author,
+                                    url: 'front/music/' + music.fileName,
+                                    pic: 'front/music/img/' + music.fileName + '.jpg' // 你可能需要为每首歌曲设置一个默认图片路径
+                                };
+                            });
+                            // 创建 APlayer 实例
+                            var ap = new APlayer({
+                                element: musicListElement,
+                                autoplay: false,
+                                music: musicArray
+                            });
                         },
-//                        {
-//                            title: 'Promise',
-//                            author: '山岡晃',
-//                            url: 'music/山岡晃 - Promise.mp3',
-//                            pic: 'img/风.jpg'
-//                        },
-                        {
-                            title: '蝶恋',
-                            author: '林坤信',
-                            url: 'front/music/林坤信 - 蝶恋(钢琴版).mp3',
-                            pic: 'front/img/古剑.jpg'
-                        },
-                        {
-                            title: '月光の雲海',
-                            author: '久石譲',
-                            url: 'front/music/久石譲 - 月光の雲海.mp3',
-                            pic: 'front/img/轻语.jpg'
+                        error: function (error) {
+                            console.error('Error fetching music list:', error);
                         }
-                    ]
-                });</script>
+                    });
+                </script>
             </div>
         </div>
 
