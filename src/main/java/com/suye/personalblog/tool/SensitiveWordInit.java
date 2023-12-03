@@ -20,17 +20,6 @@ public class SensitiveWordInit {
     private String replaceString;
     private Map<Character,String> ignoreWord;
 
-//    {
-//        try {
-//            init();
-//            for (int i=0;i< StaticField.IgnoreWords.length;i++){
-//                ignoreWord.put(StaticField.IgnoreWords[i],"1");
-//            }
-//        } catch (IOException e) {
-//            e.printStackTrace();
-//        }
-//    }
-
     public SensitiveWordInit()  {
 
     }
@@ -56,19 +45,10 @@ public class SensitiveWordInit {
      */
     private Set<String> readKeyWordFromFile() throws IOException {
         Set<String> set=new HashSet<>();
-//        //不指定字符集会乱码
-//        InputStreamReader inputStreamReader=new InputStreamReader(new FileInputStream(new File("F://SensitiveWord.txt")),"GBK");
-//        BufferedReader bufferedReader=new BufferedReader(inputStreamReader);
-//        String line=bufferedReader.readLine();
-//        while (line!=null){
-//            set.add(line);
-//            line=bufferedReader.readLine();
-//        }
         List<String> list=sensitiveService.findSensitiveWords();
-        System.out.println("11");
-        System.out.println(list);
-        set.addAll(list);
-        System.out.println(set);
+        if (list!=null && !list.isEmpty()){
+            set.addAll(list);
+        }
         return set;
     }
 
