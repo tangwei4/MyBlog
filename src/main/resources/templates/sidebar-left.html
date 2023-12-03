@@ -1,0 +1,154 @@
+<div id="sidebar-left" class="giligili-left" th:fragment="sidebar-left">
+    <!--用户头像卡信息-->
+    <div id="user-card" class="giligili-item">
+        <div id="user-card-bg"></div>
+        <a id="user-card-name">
+            <i class="giligili giligili-at"></i>CCIOC
+        </a>
+        <div id="user-card-info">
+            <a id="user-card-article" class="giligili-left" href="#">
+                <p class="num" th:text="${blogTotal}">35</p>
+                <p class="text">博客</p>
+            </a>
+            <a id="user-card-like" class="giligili-left" href="#">
+                <p class="num">37</p>
+                <p class="text">分享</p>
+            </a>
+        </div>
+        <img alt=''
+             src='http://localhost:8080/front/img/lem6.jpg' th:src="@{/front/img/lem6.jpg}"
+             srcset='front/img/lem6.jpg 2x'
+             class='avatar avatar-56 photo user-card-avatar' height='56' width='56'/> <i
+            class="giligili giligili-certify-3"></i>
+    </div>
+
+    <!--用户公众号码信息-->
+    <div id="user-info" class="giligili-item">
+        <div class="row"><i class="giligili giligili-qq"></i>&nbsp;&nbsp;&nbsp;<a
+                href="#">2424176683</a></div>
+        <div class="row"><i class="giligili giligili-email"></i>&nbsp;&nbsp;&nbsp;<a
+                href="#">CCIOC</a></div>
+        <div class="row"><i class="giligili giligili-github"></i>&nbsp;&nbsp;&nbsp;<a
+                href="#">CCIOC</a></div>
+        <div class="row"><i class="csdn giligili-csdn"></i>&nbsp;&nbsp;&nbsp;<a
+                href="#">CCIOC</a></div>
+        <div class="intro">没有爱，就看不见</div>
+    </div>
+
+    <!--音乐播放器-->
+    <div class="widget_text giligili-item" >
+        <div class="textwidget custom-html-widget">
+            <script src="https://cdn.bootcss.com/aplayer/1.5.1/APlayer.min.js"></script>
+            <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+            <div id="aplayer1" class="aplayer"></div>
+            <script>
+                // 获取音乐文件列表的接口地址
+                var musicListUrl = '/front/music';
+                // 获取包含音乐的元素
+                var musicListElement = document.getElementById('aplayer1');
+                // 使用 jQuery 的 $.ajax 发送请求
+                $.ajax({
+                    url: musicListUrl,
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function (data) {
+                        // 遍历音乐列表并添加到 APlayer 实例
+                        var musicArray = data.map(music => {
+                            return {
+                                title: music.title,
+                                author: music.author,
+                                url: '/front/music/' + music.fileName,
+                                pic: '/front/music/img/' + music.fileName + '.jpg' // 为每首歌曲设置一个默认图片路径
+                            };
+                        });
+                        // 创建 APlayer 实例
+                        var ap = new APlayer({
+                            element: musicListElement,
+                            autoplay: false,
+                            music: musicArray
+                        });
+                    },
+                    error: function (error) {
+                        console.error('Error fetching music list:', error);
+                    }
+                });
+            </script>
+        </div>
+    </div>
+
+    <!--最受欢迎-->
+    <div class="giligili-item">
+        <header class="giligili-item-header"><h3 class="giligili-item-title"><i
+                class="giligili giligili-postlist"></i> 最受欢迎</h3></header>
+        <ul class="sidebar-posts-list">
+
+            <li th:each="BlogMessage:${popularBlogList}">
+                <p class="post-title">
+                    <a href="#" th:href="'/blogDetails/'+${BlogMessage.id}" title="WordPress响应式主题Memory"
+                       th:title="${BlogMessage.title}" rel="bookmark"
+                       th:text="${BlogMessage.title}">WordPress响应式主题Memory</a></p>
+                <p class="post-info">
+                        <span>
+                            <i class="giligili giligili-view"></i>
+                            <a th:text="${BlogMessage.readnum}">33.62k</a>
+                        </span>
+                    <span>
+                            <i class="giligili giligili-time"></i>
+                            <a th:text="${BlogMessage.time}">1年前</a>
+                        </span>
+                    <span>
+                            <i class="giligili giligili-comment"></i>
+                            <a th:text="${BlogMessage.conmentnum}">206</a>
+                        </span>
+                </p>
+            </li>
+
+        </ul>
+    </div>
+
+    <!--最近评论-->
+    <div class="giligili-item">
+        <header class="giligili-item-header"><h3 class="giligili-item-title"><i
+                class="giligili giligili-comments"></i> 最近评论</h3></header>
+        <ul class="recentcomments">
+            <li th:each="ConmentMessage:${recentConmentList}">
+                <a href="" th:href="'/blogDetails/'+${ConmentMessage.blogId}+'/#comments'"
+                   title="suye" th:title="${ConmentMessage.blogName}"> <img alt=''
+                                                                            src='front/img/avatar.png'
+                                                                            th:src="${ConmentMessage.visitor.avatar}"
+                                                                            class='avatar avatar-36 photo'
+                                                                            height='36' width='36'/>
+                    <div class="right-box"><span class="author" th:text="${ConmentMessage.visitor.name}">suye</span>于<span
+                            th:text="${ConmentMessage.time}">3分钟前</span>在<span class="title"
+                                                                                   th:text="${ConmentMessage.blogName}">「WordPress响应式主题Memory」</span>中说:
+                        <br/><span class="recent-comment" th:text="${ConmentMessage.content}">OωO</span></div>
+                </a>
+            </li>
+        </ul>
+    </div>
+
+    <!--日历-->
+    <div class="giligili-item">
+        <div id="calendar_wrap" class="calendar_wrap">
+            <table id="wp-calendar">
+                <caption id="month-caption"></caption>
+                <thead>
+                <tr id="weekdays-row"></tr>
+                </thead>
+                <tfoot>
+                <tr>
+                    <td colspan="3" id="prev">
+                        <button onclick="changeMonth(-1)">&laquo; 上个月</button>
+                    </td>
+                    <td class="pad">&nbsp;</td>
+                    <td colspan="3" id="next" class="pad">
+                        <button onclick="changeMonth(1)">下个月 &raquo;</button>
+                    </td>
+                </tr>
+                </tfoot>
+                <tbody id="calendar-body"></tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
