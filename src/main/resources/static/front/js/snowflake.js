@@ -40,15 +40,15 @@ window.onload = function () {
     }
 
     // 暴风雪，瞬间生成大量雪花，持续一段时间
-    generateSnowfall(25, 100, 3000);
+    generateSnowfall(30, 500, 3000);
 
     // 中雪，稍微减少数量
     setTimeout(function () {
-        generateSnowfall(15, 60, 2000);
+        generateSnowfall(20, 300, 2000);
     }, 3500);
 
     // 小雪，更少数量
     setTimeout(function () {
-        generateSnowfall(10, 30, 3000);
+        generateSnowfall(10, 100, 3000);
     }, 6000);
 }
