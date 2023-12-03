@@ -486,18 +486,6 @@ App = {
         }
 		show_date_time();
     },
-
-    // markdownConversiontoHtml:function () {
-    //     //获取要转换的文字
-    //     // window.onload=function(){
-    //     var text = document.getElementById("uniquevontent").innerText;
-    //     //创建实例
-    //     var converter = new showdown.Converter();
-    //     //进行转换
-    //     var html = converter.makeHtml(text);
-    //     //展示到对应的地方  result便是id名称
-    //     document.getElementById("uniquevontent").innerHTML = html;
-    // }
 }
 
 

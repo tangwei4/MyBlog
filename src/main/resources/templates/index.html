@@ -230,9 +230,8 @@
 
 <div id="layout-shadow"></div>
 
-
 <script type='text/javascript'>var giligiliConfig = {
-    "siteStartTime": "2018-12-27",
+    "siteStartTime": "2023-12-01",
     "ajaxUrl": "https:\/\/localhost:8080\/",
     "loadPjax": "1"
 };</script>
@@ -266,13 +265,11 @@
         list[i].innerHTML = html;
     }
 </script>
-
 <!--云标签-->
 <script src="front/tagcloud/tagcloud.min.js"></script>
 <script type="text/javascript">
     tagcloud();
 </script>
-
 <!--看板娘-->
 <script>
     var message_Path = '/live2d/';//资源目录，如果目录不对请更改
@@ -280,7 +277,6 @@
 </script>
 <script type="text/javascript" src="front/live2d/js/live2d.js"></script>
 <script type="text/javascript" src="front/live2d/js/message.js"></script>
-
 <!--日历-->
 <script>
     const months = ["1月", "2月", "3月", "4月", "5月", "6月", "7月", "8月", "9月", "10月", "11月", "12月"];
@@ -336,5 +332,65 @@
 
     generateCalendar();
 </script>
+<!--添加雪花动态效果-->
+<script src="front/js/snowflake.js"></script>
+<!--动态线条跟随-->
+<script src="front/js/canvas-nest.min.js"></script>
+<!-- 鼠标点击特效end -->
+<script src="front/js/mouse-click.js"></script>
+<!--鼠标点击特效-->
+<script type="text/javascript">
+    //定义获取词语下标
+    var a_idx = 0;
+    jQuery(document).ready(function ($) {
+        //点击body时触发事件
+        $("body").click(function (e) {
+            //需要显示的词语
+            var a = new Array("gosick", "clannad", "命运石之门", "十二国记", "彩云国物语"
+                , "攻壳机动队", "钢之炼金术师", "EVA", "虫师", "上低音号"
+                , "三月的狮子", "反叛的鲁鲁修", "来自新世界", "寒蝉鸣泣之时", "四谎"
+                , "muv-luv", "白色相簿2", "海猫鸣泣之时", "樱之诗", "家族计划"
+                , "装甲恶鬼村正", "ever17", "美好的每一天", "海市蜃楼之馆", "YUNO"
+            );
+            //设置词语给span标签
+            var $i = $("<span/>").text(a[a_idx]);
+            //下标等于原来下标+1  余 词语总数
+            a_idx = (a_idx + 1) % a.length;
+            //获取鼠标指针的位置，分别相对于文档的左和右边缘。
+            //获取x和y的指针坐标
+            var x = e.pageX, y = e.pageY;
+            //在鼠标的指针的位置给$i定义的span标签添加css样式
+            $i.css({
+                "z-index": 999,
+                "top": y - 20,
+                "left": x,
+                "position": "absolute",
+                "font-weight": "bold",
+                "color": rand_color()
+            });
+
+            // 随机颜色
+            function rand_color() {
+                return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + ")"
+            }
+
+            //在body添加这个标签
+            $("body").append($i);
+            //animate() 方法执行 CSS 属性集的自定义动画。
+            //该方法通过CSS样式将元素从一个状态改变为另一个状态。CSS属性值是逐渐改变的，这样就可以创建动画效果。
+            //详情请看http://www.w3school.com.cn/jquery/effect_animate.asp
+            $i.animate({
+                //将原来的位置向上移动180
+                "top": y - 180,
+                "opacity": 0
+                //1500动画的速度
+            }, 1500, function () {
+                //时间到了自动删除
+                $i.remove();
+            });
+        });
+    });
+</script>
+
 </body>
 </html>
