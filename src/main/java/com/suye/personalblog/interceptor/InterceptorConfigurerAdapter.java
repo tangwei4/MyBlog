@@ -5,12 +5,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-03
- * Time: 16:28
- */
 //拦截器配置
 @Configuration
 public class InterceptorConfigurerAdapter extends WebMvcConfigurerAdapter {

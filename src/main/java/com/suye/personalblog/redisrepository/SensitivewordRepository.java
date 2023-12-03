@@ -7,12 +7,6 @@ import org.springframework.stereotype.Repository;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-08
- * Time: 21:36
- */
 @Repository
 public class SensitivewordRepository {
     private static String HEAD="SensitiveWord";

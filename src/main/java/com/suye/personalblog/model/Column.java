@@ -1,11 +1,5 @@
 package com.suye.personalblog.model;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-20
- * Time: 20:42
- */
 //专栏
 public class Column {
     private int id;

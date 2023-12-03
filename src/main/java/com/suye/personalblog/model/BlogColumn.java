@@ -1,11 +1,5 @@
 package com.suye.personalblog.model;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-22
- * Time: 16:53
- */
 public class BlogColumn {
 
     private int id;

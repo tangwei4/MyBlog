@@ -14,12 +14,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletRequest;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-01
- * Time: 15:48
- */
 @Controller
 public class LoginController {
     @Value("${admin.name}")

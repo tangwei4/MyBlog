@@ -1,11 +1,5 @@
 package com.suye.personalblog.model;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-20
- * Time: 20:51
- */
 //标签
 public class Label {
     private int id;

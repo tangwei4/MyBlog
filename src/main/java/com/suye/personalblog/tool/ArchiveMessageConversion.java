@@ -7,12 +7,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-28
- * Time: 20:15
- */
 //归档信息转化
 @Component
 public class ArchiveMessageConversion {

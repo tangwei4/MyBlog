@@ -2,14 +2,6 @@ package com.suye.personalblog.tool;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Stack;
-
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-25
- * Time: 12:39
- */
 
 /**
  * 获取运行轨迹的工具类

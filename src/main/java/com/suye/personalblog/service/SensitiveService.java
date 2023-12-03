@@ -2,17 +2,10 @@ package com.suye.personalblog.service;
 
 import com.suye.personalblog.redisrepository.SensitivewordRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.AutoConfigurationPackage;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-08
- * Time: 21:53
- */
 @Service
 public class SensitiveService {
 

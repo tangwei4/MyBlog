@@ -3,12 +3,6 @@ package com.suye.personalblog.model;
 import java.io.Serializable;
 import java.util.Date;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-07
- * Time: 20:48
- */
 public class LogMessage implements Serializable {
     private String date;
     private String action;

@@ -12,12 +12,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-20
- * Time: 22:41
- */
 @Service
 public class LabelService {
     @Autowired

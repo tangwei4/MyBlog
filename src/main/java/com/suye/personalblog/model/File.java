@@ -1,11 +1,5 @@
 package com.suye.personalblog.model;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-04
- * Time: 11:49
- */
 //用来保存文件的信息
 public class File {
     private int id;

@@ -10,12 +10,6 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-21
- * Time: 10:18
- */
 @Service
 public class ColumnService {
 

@@ -6,12 +6,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-22
- * Time: 22:37
- */
 @Repository
 public interface BlogCategoryMapping {
 

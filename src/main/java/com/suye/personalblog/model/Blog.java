@@ -5,12 +5,6 @@ import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Date;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-20
- * Time: 20:02
- */
 //博客
 public class Blog implements Serializable,BlogMessageInterface {
     private int id;

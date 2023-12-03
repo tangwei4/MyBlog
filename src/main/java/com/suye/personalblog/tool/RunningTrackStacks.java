@@ -1,11 +1,5 @@
 package com.suye.personalblog.tool;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-28
- * Time: 14:54
- */
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;

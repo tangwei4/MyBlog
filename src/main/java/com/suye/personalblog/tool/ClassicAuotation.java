@@ -2,12 +2,6 @@ package com.suye.personalblog.tool;
 
 import java.util.Random;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-09
- * Time: 11:33
- */
 //一言与验证码
 public class ClassicAuotation {
 

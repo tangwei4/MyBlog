@@ -1,15 +1,8 @@
 package com.suye.personalblog.model;
 
 import java.io.Serializable;
-import java.sql.Timestamp;
 import java.util.Date;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-20
- * Time: 20:56
- */
 //评论
 public class Conment implements Serializable {
     private int id;

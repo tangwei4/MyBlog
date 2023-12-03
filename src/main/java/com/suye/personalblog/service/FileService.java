@@ -7,12 +7,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-04
- * Time: 12:33
- */
 @Service
 public class FileService {
 

@@ -5,16 +5,9 @@ import com.suye.personalblog.service.SensitiveService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import javax.mail.search.SearchTerm;
-import java.io.*;
+import java.io.IOException;
 import java.util.*;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-08
- * Time: 19:44
- */
 //敏感词过滤初始化
 //采用DFA算法
 @Component

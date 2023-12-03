@@ -14,12 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-01
- * Time: 21:34
- */
 @Controller
 public class AdminBlogController {
 

@@ -16,12 +16,6 @@ import java.io.File;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-20
- * Time: 13:43
- */
 @Controller
 public class Hello {
     private static final int FILE_PORT = 9991;

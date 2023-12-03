@@ -1,11 +1,5 @@
 package com.suye.personalblog.model;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-20
- * Time: 20:09
- */
 //类别
 public class Category {
     private int id;

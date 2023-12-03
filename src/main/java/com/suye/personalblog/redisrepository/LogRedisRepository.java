@@ -10,12 +10,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-07
- * Time: 20:44
- */
 //日志仓库
 @Repository
 public class LogRedisRepository {

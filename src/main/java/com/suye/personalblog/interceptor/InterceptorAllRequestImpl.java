@@ -7,12 +7,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-03
- * Time: 16:25
- */
 //拦截所有的请求
 @Component
 public class InterceptorAllRequestImpl implements HandlerInterceptor {

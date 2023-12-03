@@ -7,12 +7,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.concurrent.TimeUnit;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-07
- * Time: 9:46
- */
 @Repository
 public class CommentRedisRepository {
     private static String HEAD="comment:";

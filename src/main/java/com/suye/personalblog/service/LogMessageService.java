@@ -10,12 +10,6 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-07
- * Time: 21:16
- */
 @Service
 public class LogMessageService {
 

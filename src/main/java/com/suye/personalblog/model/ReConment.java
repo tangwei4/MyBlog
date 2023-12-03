@@ -2,12 +2,6 @@ package com.suye.personalblog.model;
 
 import java.util.Date;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-20
- * Time: 21:00
- */
 //恢复评论
 public class ReConment {
     private int id;

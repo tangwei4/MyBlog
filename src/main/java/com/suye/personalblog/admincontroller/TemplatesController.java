@@ -11,12 +11,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.io.*;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-07
- * Time: 19:05
- */
 @Controller
 public class TemplatesController {
     @Value("${templates.path}")

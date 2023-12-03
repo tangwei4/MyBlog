@@ -2,12 +2,6 @@ package com.suye.personalblog.model;
 
 import org.springframework.stereotype.Component;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-20
- * Time: 19:29
- */
 //参观者
 public class Visitor {
     private int id;

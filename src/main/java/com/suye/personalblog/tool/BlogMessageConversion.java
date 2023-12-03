@@ -13,12 +13,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-21
- * Time: 16:30
- */
 @Component
 public class BlogMessageConversion implements BlogMessageInterface {
 

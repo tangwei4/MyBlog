@@ -1,19 +1,11 @@
 package com.suye.personalblog.mapping;
 
 import com.suye.personalblog.model.File;
-import org.apache.catalina.LifecycleState;
 import org.apache.ibatis.annotations.*;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-04
- * Time: 12:32
- */
 @Repository
 public interface FileMapping {
     @Select("select * from file limit #{offset},12")

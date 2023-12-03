@@ -19,12 +19,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-26
- * Time: 20:21
- */
 @Controller
 public class ConmentController {
 

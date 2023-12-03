@@ -1,14 +1,7 @@
 package com.suye.personalblog.tool;
 
-import java.sql.Timestamp;
 import java.util.Date;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-21
- * Time: 22:37
- */
 //时间的转化
 public class TimeConversion {
     static final long SECOND=1000;

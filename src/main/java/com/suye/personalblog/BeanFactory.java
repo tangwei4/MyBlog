@@ -6,12 +6,6 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Component;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-05
- * Time: 19:16
- */
 //bean工厂类
 @Component
 @Lazy(false)

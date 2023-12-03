@@ -9,7 +9,6 @@ import com.suye.personalblog.service.ColumnService;
 import com.suye.personalblog.service.LabelService;
 import com.suye.personalblog.tool.BlogMessageConversion;
 import com.suye.personalblog.tool.PaginationTool;
-import com.suye.personalblog.tool.RunningTrackStack;
 import com.suye.personalblog.tool.RunningTrackStacks;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +20,6 @@ import org.springframework.web.servlet.ModelAndView;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-30
- * Time: 15:42
- */
 @Controller
 public class ColumnLabelAndCategoryController {
 

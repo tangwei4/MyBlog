@@ -1,11 +1,4 @@
 package com.suye.personalblog;
-
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-07
- * Time: 21:22
- */
 //静态属性
 public class StaticField {
 

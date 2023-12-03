@@ -5,19 +5,12 @@ import com.suye.personalblog.model.Category;
 import com.suye.personalblog.service.CategoryService;
 import com.suye.personalblog.service.LabelService;
 import com.suye.personalblog.service.LogMessageService;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-03
- * Time: 9:39
- */
 @Controller
 public class AdminCategoryController {
     @Autowired

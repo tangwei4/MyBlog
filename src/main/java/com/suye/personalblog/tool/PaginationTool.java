@@ -3,18 +3,11 @@ package com.suye.personalblog.tool;
 import com.suye.personalblog.model.Blog;
 import com.suye.personalblog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2018-12-30
- * Time: 12:06
- */
 //用于分页
 @Component
 public class PaginationTool {

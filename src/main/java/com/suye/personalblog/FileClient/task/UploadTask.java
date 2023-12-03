@@ -7,12 +7,6 @@ import org.springframework.stereotype.Component;
 
 import java.io.File;
 
-/**
- * Created with IntelliJ IDEA.
- * Author: Suyeq
- * Date: 2019-01-05
- * Time: 16:19
- */
 //上传任务
 @Component
 public class UploadTask implements Runnable{
