@@ -5,23 +5,29 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="shortcut icon" href="admin/images/favicon.png" th:href="@{/admin/images/favicon.png}"/>
-    <title>Tale - 用户登录</title>
-    <link href="admin/plugins/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" th:href="@{/admin/plugins/font-awesome/4.7.0/css/font-awesome.min.css}">
+    <title>博客后台登录</title>
+    <link href="admin/plugins/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+          th:href="@{/admin/plugins/font-awesome/4.7.0/css/font-awesome.min.css}">
 
-    <link href="admin/plugins/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css" th:href="@{/admin/plugins/bootstrap/3.3.7/css/bootstrap.min.css}"/>
-    <link href="admin/plugins/limonte-sweetalert2/6.4.1/sweetalert2.min.css" rel="stylesheet" th:href="@{/admin/plugins/limonte-sweetalert2/6.4.1/sweetalert2.min.css}">
+    <link href="admin/plugins/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" type="text/css"
+          th:href="@{/admin/plugins/bootstrap/3.3.7/css/bootstrap.min.css}"/>
+    <link href="admin/plugins/limonte-sweetalert2/6.4.1/sweetalert2.min.css" rel="stylesheet"
+          th:href="@{/admin/plugins/limonte-sweetalert2/6.4.1/sweetalert2.min.css}">
 
-    <link href="admin/css/style.min.css?v=v1.0" rel="stylesheet" type="text/css" th:href="@{/admin/css/style.min.css?v=v1.0}">
+    <link href="admin/css/style.min.css?v=v1.0" rel="stylesheet" type="text/css"
+          th:href="@{/admin/css/style.min.css?v=v1.0}">
     <style type="text/css">
-        body,html {
-            background: url("/admin/images/bg/2.png") no-repeat;
+        body, html {
+            background: url("/admin/images/bg/wallhaven-o5gkq9_1920x1080.png") no-repeat;
             background-size: cover;
         }
+
         .panel-shadow {
             -moz-box-shadow: 0px 0px 10px 0px rgba(39, 49, 65, 0.1);
             -webkit-box-shadow: 0px 0px 10px 0px rgba(39, 49, 65, 0.1);
             box-shadow: 0px 0px 10px 0px rgba(39, 49, 65, 0.1);
         }
+
         .bg-overlay {
             -moz-border-radius: 6px 6px 0 0;
             -webkit-border-radius: 6px 6px 0 0;
@@ -33,6 +39,7 @@
             top: 0;
             width: 100%;
         }
+
         .input-border {
             font-size: 14px;
             width: 100%;
@@ -46,15 +53,27 @@
             text-shadow: 0px 2px 3px #555;
             color: #cac9c8;
         }
+
+        /* Add the following styles for the captcha */
+        .captcha-container {
+            display: flex; /* 使用flex布局 */
+            align-items: center; /* 垂直居中 */
+        }
+
+        .captcha-image {
+            height: 40px;
+            margin-right: 10px; /* 调整右侧间距 */
+        }
+
+        .captcha-input {
+            flex: 1; /* 占据剩余空间 */
+            font-size: 14px;
+            height: 40px;
+            border-radius: 0;
+            border: none;
+            border-bottom: 1px solid #dadada;
+        }
     </style>
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <!--<script src="admin/plugins/html5shiv/3.7.0/html5shiv.js" ></script>-->
-    <!--<script src="admin/plugins/respond.js/1.3.0/respond.min.js"></script>-->
-
-    <![endif]-->
-
 </head>
 <body>
 
@@ -82,6 +101,18 @@
                     </div>
                 </div>
 
+                <!-- Add the captcha container -->
+                <!-- 将验证码图片和输入框都放在同一行，并用div包裹起来 -->
+                <div class="form-group">
+                    <div class="col-xs-12">
+                        <div class="captcha-container">
+                            <input class="captcha-input" name="captcha" type="text" required=""
+                                   placeholder="请输入验证码">
+                            <img class="captcha-image" id="captchaImage" th:src="@{/captcha}" alt="验证码" onclick="refreshCaptcha()">
+                        </div>
+                    </div>
+                </div>
+
                 <div class="form-group">
                     <div class="col-xs-12">
                         <div class="checkbox checkbox-danger">
@@ -93,7 +124,8 @@
 
                 <div class="form-group text-center m-t-40">
                     <div class="col-xs-12">
-                        <button class="btn btn-danger btn-lg btn-rounded btn-block w-lg waves-effect waves-light" style="box-shadow: 0px 0px 4px #868282;" type="submit">登&nbsp;录
+                        <button class="btn btn-danger btn-lg btn-rounded btn-block w-lg waves-effect waves-light"
+                                style="box-shadow: 0px 0px 4px #868282;" type="submit">登&nbsp;录
                         </button>
                     </div>
                 </div>
@@ -105,7 +137,8 @@
 <!-- Main  -->
 <script src="admin/plugins/jquery/3.2.1/jquery.min.js" th:src="@{/admin/plugins/jquery/3.2.1/jquery.min.js}"></script>
 
-<script src="admin/plugins/limonte-sweetalert2/6.4.1/sweetalert2.min.js" th:src="@{/admin/plugins/limonte-sweetalert2/6.4.1/sweetalert2.min.js}"></script>
+<script src="admin/plugins/limonte-sweetalert2/6.4.1/sweetalert2.min.js"
+        th:src="@{/admin/plugins/limonte-sweetalert2/6.4.1/sweetalert2.min.js}"></script>
 
 <script src="admin/js/base.js" th:src="@{/admin/js/base.js}"></script>
 <script type="text/javascript">
@@ -123,6 +156,23 @@
             }
         });
         return false;
+    }
+</script>
+
+<script type="text/javascript">
+    function refreshCaptcha() {
+        // 发送Ajax请求获取新验证码图片
+        $.ajax({
+            type: "GET",
+            url: "/captcha",
+            success: function (data) {
+                // 将新验证码图片显示在前端
+                $("#captchaImage").attr("src", "/captcha?" + new Date().getTime());
+            },
+            error: function (error) {
+                console.error('Error refreshing captcha:', error);
+            }
+        });
     }
 </script>
 </body>
