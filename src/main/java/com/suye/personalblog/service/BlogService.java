@@ -212,11 +212,6 @@ public class BlogService {
      * @param ispublish
      * @return 该新增博客的id
      */
-//    public int addBlog(String title,String imgurl,String describ,String content,int istalk,int iscomment,int ispublish,String htmlcontent){
-//         blogMapping.addBlog(title,imgurl,describ,content,istalk,iscomment,ispublish,htmlcontent);
-//         return blogMapping.lastBlogID();
-//    }
-
     public int addBlog(String title,int imgid,String describ,String content,int istalk,int iscomment,int ispublish,String htmlcontent){
         blogMapping.addBlog(title,null,describ,content,istalk,iscomment,ispublish,htmlcontent,imgid);
         return blogMapping.lastBlogID();
@@ -235,10 +230,6 @@ public class BlogService {
      * @param htmlcontent
      * @return
      */
-//    public int modifyBlog(String title,String imgurl,String describ,String content,int istalk,int iscomment,int ispublish,int blogId,String htmlcontent){
-//        return blogMapping.modifyBlog(title,imgurl,describ,content,istalk,iscomment,ispublish,blogId,htmlcontent);
-//    }
-
     public int modifyBlog(String title,int imgid,String describ,String content,int istalk,int iscomment,int ispublish,int blogId,String htmlcontent){
         return blogMapping.modifyBlog(title,describ,content,istalk,iscomment,ispublish,blogId,htmlcontent,imgid);
     }
